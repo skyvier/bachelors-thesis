@@ -1,0 +1,5 @@
+graph second {
+   1 -- 1 -- 2;
+   1 [shape=circle, style=filled, fillcolor=grey]
+   2 [shape=circle]
+}

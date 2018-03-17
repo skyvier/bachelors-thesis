@@ -1,0 +1,9 @@
+graph fourth {
+   1 -- 1 -- 2 -- 5;
+   1 -- 3 -- 4;
+   1 [shape=circle]
+   2 [shape=circle, style=filled, fillcolor=grey]
+   3 [shape=circle]
+   4 [shape=circle]
+   5 [shape=circle]
+}

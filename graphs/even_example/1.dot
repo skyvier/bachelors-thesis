@@ -1,0 +1,4 @@
+graph first {
+   1 -- 1;
+   1 [shape=circle, style=filled, fillcolor=grey]
+}
