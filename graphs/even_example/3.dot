@@ -2,6 +2,6 @@ graph third {
    1 -- 1 -- 2;
    1 -- 3;
    1 [shape=circle, style=filled, fillcolor=grey]
-   2 [shape=circle]
+   2 [shape=circle, label=<<u>\N</u>>]
    3 [shape=circle]
 }

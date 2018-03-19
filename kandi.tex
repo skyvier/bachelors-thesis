@@ -51,14 +51,18 @@
 
 \usepackage{graphicx}
 \usepackage{amsfonts,amssymb,amsbsy}
+\usepackage{amsmath}
 \usepackage{enumitem}
 \usepackage{array}
 \usepackage{cellspace}
+\usepackage{dsfont}
 \usepackage[export]{adjustbox}
 
 \newcolumntype{F}{>{\centering}p{0.15\textwidth}} % math-mode version of "l" column type
 
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\indicator}{\mathopen{\mathds{1}}}
 \newcommand*{\prob}{\mathbb{P}}
 
 \newcommand{\subfigure}[2]{%
@@ -156,19 +160,19 @@
 %% myös tiivistelmälomakkeeseen.
 %%
 \thesisabstract{
-   Nykymaailma on täynnä erilaisia verkkorakenteita Internetistä sosiaalisiin piireihin.
-   Verkkojen kasvun mallintaminen onkin kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana.
-   Yksi tällainen kasvumalli on No Restart Random Walk (NRRW), jossa satunnaiskävelijä
-   kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Kävelijä lähtee alkusolmusta, kulkee s:n
-   kaaren läpi satunnaiseen solmuun, jonka naapuriksi lisätään uusi solmu. Uuden solmun asteluku on aina yksi. 
-   Tätä prosessia jatketaan satunnaiskävelijän viimeisimmästä tilasta, ja prosessin toistaminen kasvattaa satunnaisen puurakenteen. 
-   Mallin ominaisuudet määrää siis askelparametri, s. Tällainen NRRW-malli mukailee reaalimaailman verkoille tyypillisiä ominaisuuksia, 
-   kuten preferential and local attachment. Mallissa satunnaiskävelyprosessi
-   ja verkkoa kuvaavan satunnaisprosessi ovat voimakkaasti riippuvaisia. Prosessin käsittelyä
-   voidaan helpottaa osoittamalla, että se on yhdenmukainen yksinkertaisemman stokastisen prosessin kanssa.
-   Näytän, että NRRW-malli on stokastisesti yhdenmukainen rakentamani riippumattomien, tasajakautuneiden
-   satunnaislukujen määräämän mallin kanssa. Lopuksi käytän tätä vaihtoehtoista esitystapaa puun solmujen palautuvuutta
-   koskevan lauseen todistukseen.
+Nykymaailma on täynnä erilaisia verkkorakenteita Internetistä sosiaalisiin piireihin.
+Verkkojen kasvun mallintaminen onkin kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana.
+Yksi tällainen kasvumalli on No Restart Random Walk (NRRW), jossa satunnaiskävelijä
+kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Kävelijä lähtee alkusolmusta, kulkee s:n
+kaaren läpi satunnaiseen solmuun, jonka naapuriksi lisätään uusi solmu. Uuden solmun asteluku on aina yksi. 
+Tätä prosessia jatketaan satunnaiskävelijän viimeisimmästä tilasta, ja prosessin toistaminen kasvattaa satunnaisen puurakenteen. 
+Mallin ominaisuudet määrää siis askelparametri, s. Tällainen NRRW-malli mukailee reaalimaailman verkoille tyypillisiä ominaisuuksia, 
+kuten preferential and local attachment. Mallissa satunnaiskävelyprosessi
+ja verkkoa kuvaavan satunnaisprosessi ovat voimakkaasti riippuvaisia. Prosessin käsittelyä
+voidaan helpottaa osoittamalla, että se on yhdenmukainen yksinkertaisemman stokastisen prosessin kanssa.
+Näytän, että NRRW-malli on stokastisesti yhdenmukainen rakentamani riippumattomien, tasajakautuneiden
+satunnaislukujen määräämän mallin kanssa. Lopuksi käytän tätä vaihtoehtoista esitystapaa puun solmujen palautuvuutta
+koskevan lauseen todistukseen.
 }
 
 %% Tekijänoikeusteksti. Tekijänoikeus on tekijällä riippumatta siitä onko
@@ -307,30 +311,21 @@ Otaniemi, 15.9.2017
 \subsection*{Symbolit}
 
 \begin{tabular}{ll}
-$\mathbf{B}$  & magneettivuon tiheys  \\
-$c$              & valon nopeus tyhjössä $\approx 3\times10^8$ [m/s]\\
-$\omega_{\mathrm{D}}$    & Debye-taajuus \\
-$\omega_{\mathrm{latt}}$ & hilan keskimääräinen fononitaajuus \\
-$\uparrow$       & elektronin spinin suunta ylöspäin\\
-$\downarrow$     & elektronin spinin suunta alaspäin
+$\N_{0}$  & ei-negatiiviset kokonaisluvut (\( 0, 1, 2, \ldots \))  \\
 \end{tabular}
 
 \subsection*{Operaattorit}
 
 \begin{tabular}{ll}
-$\nabla \times \mathbf{A}$              & vektorin $\mathbf{A}$ roottori\\
-$\displaystyle\frac{\mbox{d}}{\mbox{d} t}$ & derivaatta muuttujan $t$ suhteen\\
-[3mm]
-$\displaystyle\frac{\partial}{\partial t}$  & osittaisderivaatta muuttujan $t$ suhteen \\[3mm]
-$\sum_i $                       & summa indeksin $i$ yli\\
-$\mathbf{A} \cdot \mathbf{B}$    & vektorien $\mathbf{A}$ ja $\mathbf{B}$ pistetulo
+   $ \indicator \left\{ X \right\} $               & indikaattorifunktio ehdolla X\\
+   $ \prob \left[ X \right] $                      & tapahtuman X todennäköisyys\\
 \end{tabular}
 
 \subsection*{Lyhenteet}
 
 \begin{tabular}{ll}
-NRRW       & No Restart Random Walk \\
-APLAC      & an object-oriented analog circuit simulator and design tool \\
+NRRW       & No Restart Random Walk\\
+i.i.d.     & riippumaton ja identtisesti jakautunut\\
 \end{tabular}
 
 
@@ -383,18 +378,10 @@ NRRW-prosessi voidaan nähdä joko satunnaisena verkkona tai satunnaiskävelynä
 
 \subsection{Yleiskatsaus}
 
-NRRW-prosessi on kahden toisistaan riippuvan stokastisen prosessin pari, \( ( G_{t}^{s}, W_{t} )_{t \geq 0} \). Molemmat prosessit ovat kytkeytyneet tiiviisti toisiinsa. Niistä ensimmäinen, \( G_{t}^{s} \), on satunnaisverkko, johon lisätään uusi solmu \textit{s}:n aikayksikön välein. Satunnaisprosessin tilajoukko on kaikkien suuntaamattomien, yhtenäisten ja syklittömien verkkojen eli puiden joukko.  Siirtymätodennäköisyydet ovat nollasta poikkeavia vain ajanhetkillä \( t = sn, \; n \in \Z \) ja ne määrää satunnaiskävelyn \( W_{t} \) siirtymämatriisi hetkellä t (\( P_{t} \)):
-\[
-   \prob \left[ G_{t+s}^{s} = (V_{t} \cup \{ n + 1 \}, E_{t} \cup \{ (i, n + 1) \}) \right] = \prob \left[ W_{t+s} = i \mid W_{t} = n \right] = (P_{t}^{s})_{n,i}
-\]
-
-Vastaavasti satunnaiskävelyprosessin (\( W_{t} \)) tilajoukon ja siirtymätodennäköisyydet määrää sen kasvattama satunnaisverkko. Molemmat näistä muuttuvat aina, kun verkkoon lisätään uusi solmu. Lisäyshetkien välillä satunnaiskävelyprosessi voidaan kuitenkin nähdä tavallisena äärellisen tilajoukon Markov-ketjuna.
-
-Edellä kuvattu parillisen NRRW-prosessin käyttäytyminen ilmenee taulukosta \ref{realisaatio}.
+NRRW-prosessi on kahden toisistaan riippuvan stokastisen prosessin pari, \( ( G_{t}^{s}, W_{t} )_{t \geq 0} \). Molemmat prosessit ovat kytkeytyneet vahvasti toisiinsa, mutta niitä voidaan jaksoittain tarkastella myös erillisinä. Taulukko \ref{realisaatio} esittää yhden mahdollisen NRRW-prosessin realisaation askelparametrilla \( s = 2 \) ja parillisilla ajanhetkillä.
 
 \begin{table}[htb]
-   \caption{Yksi mahdollinen NRRW-prosessin realisaatio askelparametrilla \( s = 2 \). Satunnaiskävely on harmaan värin osoittamassa tilassa ja uusi solmu on juuri lisätty sen naapuriksi. \label{realisaatio}}
-   % \centering
+   \caption{Yksi mahdollinen NRRW-prosessin realisaatio askelparametrilla \( s = 2 \). Satunnaiskävely on harmaan värin osoittamassa tilassa ja uusi solmu on juuri lisätty sen naapuriksi. Satunnaiskävely siirtyi nykyiseen tilaansa alleviivatun solmun kautta. \label{realisaatio}}
    \begin{center}
    {\renewcommand{\arraystretch}{1.1}
    \begin{tabular}{|F|F|F|F|F|}
@@ -418,9 +405,13 @@ Edellä kuvattu parillisen NRRW-prosessin käyttäytyminen ilmenee taulukosta \r
    \end{center}
 \end{table}
 
-TODO: siirtymätodennäköisyydet?
+Askelparametri vaikuttaa huomattavasti siihen, millaisia verkkoja NRRW-prosessi kasvattaa. Tämä ilmenee hyvin tietokonesimuloiduista realisaatioista kuvassa \ref{simulaatiot}. Parametrilla \( s = 1 \) jokaiseen satunnäiskävelyn vierailemaan tilaan lisätään uusi solmu. Tämä johtaa korkeisiin puihin, joissa solmut jakutuvat tasaisesti parillisille ja parittomille tasoille. Satunnaiskävelyn kaikki tilat ovat väistyviä.
 
-\subsection{Parillinen prosessi}
+Sen sijaan parillinen askelparametri (\( s \in 2\N_{0} \)) johtaa hyvin toisenlaisiin verkkoihin. Simulaatiotulokset viittaavat solmujen kasaantuvan suurissa määrin joidenkin yksittäisten solmujen jälkeläisiksi. Kyseessä on niin sanottu \textit{prefential attachment} -ilmiö, jossa jotain mitattavaa suuretta kertyy sellaisille joukon alkioille, joilla on jo ennestään paljon kyseistä suuretta. Satunnaisverkossa tämä ilmenee siten, että uusia solmuja liitetään todennäköisimmin sellaisiin verkon solmuihin, joilla on jo ennestään korkea asteluku.
+
+Parillisen askelparametrin NRRW-prosesseihin liittyy myös toinen erikoisuus. Koska uusi solmuja lisätään vain parillisen askelmäärän välein, niitä kertyy vain verkon parillisille tasoille, ellei satunnaiskävely kulje juurisolmun silmukkakaaren läpi. Silloin satunnaiskävelyn pariteetti vaihtuu ja uusia solmuja lisätään vain parittomille tasoille.
+
+Parillisen askelparametrin NRRW-prosessin ominaisuudet vastaavat paremmin todellisia verkostoja, kuten Internettiä ja sosiaalisia piirejä [2]. Rajoitun siis tarkastelemaan vain parillisen askelparametrin NRRW-prosesseja.
 
 \begin{figure}[htb]
 \centering
@@ -428,8 +419,124 @@ TODO: siirtymätodennäköisyydet?
 \caption{NRRW-prosessin realisaatioita tietokonesimulaatioissa. [1] \label{simulaatiot}}
 \end{figure}
 
-\section{Ekvivalentti malli}
-% \section{Background}
+\subsubsection{Satunnaisverkko}
+
+\( G_{t}^{s} \), on satunnaisverkko, johon lisätään uusi solmu \textit{s} aikayksikön välein. Satunnaisprosessin tilajoukko on kaikkien suuntaamattomien, yhtenäisten ja syklittömien verkkojen eli puiden joukko.
+
+\vspace{0.5cm}
+
+\textbf{Määritelmä}: Suuntaamaton verkko G on pari (V, E), missä joukko V on verkon solmujen joukko (\( v_{i} \in V \)) ja E on suuntaamattomien kaarien joukko. Kaarien joukon alkiot ovat muotoa \( \{ v_{i}, v_{j} \} \). Kaari \( \{ v_{i}, v_{j} \} \) yhdistää solmut \( v_{i} \) ja \( v_{j} \) toisiinsa. 
+
+\vspace{0.5cm}
+
+Kasvavan verkon käsittelyn helpottamiseksi satunnaisverkon \( G_{t}^{s} \) solmut indeksoidaan kokonaisluvuilla (\( 0, 1, 2, \ldots \)) lisäysjärjestyksen mukaan. Juurisolmu on siis \( v_{0} \) ja hetkelä \( t = sn, \; n \in \Z \) lisätään solmu \( v_{n} \). Tarkastellaan satunnaisverkkoa \( (G_{t}^{s})_{t \geq 0} \) itsenäisenä prosessina. Sen siirtymätodennäköisyydet pois nykytilasta ovat nollasta poikkeavia vain ajanhetkillä \( t = sn, \; n \in \Z \). Ne määrää satunnaiskävelyn \( (W_{t})_{t \geq 0} \) siirtymämatriisi hetkellä \( t = sn \), \( P_{t} \):
+\begin{equation}
+\begin{split}
+   & \prob \left[ G_{t+s}^{s} = (V_{t} \cup \{ v_{n + 1} \}, E_{t} \cup \{ (v_{i}, v_{n + 1}) \}) \mid G_{t} = (V_{t}, E_{t}) \right] \\
+   &= \prob \left[ W_{t+s} = v_{i} \mid W_{t} = v_{n} \right] = (P_{t}^{s})_{n,i}
+\end{split}
+\end{equation}
+
+\subsubsection{Satunnaiskävely}
+
+Vastaavasti satunnaiskävelyprosessin \( (W_{t})_{t \geq 0} \) tilajoukon ja siirtymätodennäköisyydet määrää sen kasvattama satunnaisverkko. Molemmat näistä muuttuvat aina, kun verkkoon lisätään uusi solmu. Lisäyshetkien välillä tilajoukko on kuitenkin vakio ja satunnaiskävelyprosessi voidaankin silloin nähdä tavallisena äärellisen tilajoukon Markov-ketjuna. Jos satunnaiskävely on solmussa \( i \) hetkellä \( t \), valitaan seuraava tila satunnaisesti valitsemalla yksi solmusta \( i \) lähtevä kaari ja siirtymällä sen osoittamaan solmuun. Todennäköisyysmassa on tasajakautunut kaikkien solmun \( i \) kaarien kesken. 
+
+Koska NRRW-prosessi rakentaa puita, ei verkossa ole muita syklejä, kuin juuren kaari itseensä. Verkkoteoriassa kaaret solmusta itseensä lasketaan kahdesti. Merkitään solmun \( v_{i} \) solmuun \( v_{j} \) yhdistävien kaarien määrää
+
+\[
+   \psi^{(t)}(v_{i}, v_{j}) = 
+      \begin{cases}
+         \indicator \left\{ \{ v_{i}, v_{j} \} \in E_{t} \right\} & \quad \text{jos } v_{i} \neq v_{j} \\
+         2 \cdot \indicator \left\{ v_{i} = v_{0} \right\}        & \quad \text{muulloin}
+      \end{cases}
+   \label{equation:psi}
+\]
+missä \( E_{t} \) on verkon \( G_{t} \) kaarien joukko. Nyt todennäköisyys siirtyä solmusta \( v_{i} \) solmuun \( v_{j} \) on
+
+\begin{equation}
+   \prob \left[ W_{t+1} = v_{j} \mid W_{t} = v_{i} \right] = \frac{\psi^{(t)}(v_{i}, v_{j})}{d_{t}(v_{i})}
+   \label{equation:verkko-tn}
+\end{equation}
+missä \( d_{t}(v_{i}) \) on solmun \( v_{i} \) asteluku hetkellä t. Toisin sanoen
+
+\begin{equation}
+   d_{t}(v_{i}) = \sum_{w \in V} \psi^{(t)}(v_{i}, w)
+   \label{equation:asteluku}
+\end{equation}
+eli kaikkien solmuun \( v_{i} \) yhdistyvien kaarien lukumäärä.
+
+\subsection{Kokonaisuus}
+
+Satunnaisverkon ja satunnaiskävelyn erillinen tarkastelu paljastaa, että näistä jälkimmäinen on NRRW-prosessin keskeisin satunnaisuuden lähde. Satunnaiskävely muuttaa liikkeillään sen omaa tilajoukkoa eli verkkoa \( G_{t}^{s} \). Kun verkko muuttuu, myös satunnaiskävelyn siirtymätodennäköisyydet muuttuvat. Selvästi satunnaiskävelyprosessi on ajassa epähomogeeninen stokastinen prosessi. Satunnaisverkko sen sijaan kasvaa satunnaiskävelyn realisaation ohjaamana. Kokonaisuutena NRRW-prosessi on siis myös epähomogeeninen ajassa.
+
+\subsection{Parillinen prosessi}
+
+TODO: Erityishuomioita?
+
+\section{Stokastinen esitys}
+
+\subsection{Teoria}
+
+Olkoon \( (\omega_{t})_{t \geq 0} \) jono riippumattomia välin \( [0, 1] \) tasajakautuneita satunnaislukuja. Toisin sanoen \( w_{t} \sim \text{Tas}(0, 1) \). Tällaista satunnaislukujen sarjaa voidaan käyttää monimutkaisemman stokastisen prosessin algoritmiseen simulointiin [3]. Simulointi rakennetaan etsimällä deterministinen funktio \( \phi : S \times [0, 1] \to S \), joka liittää stokastisen prosessin tilan ja välin \( [0, 1] \) reaaliluvun prosessin seuraavaan tilaan. Funktion \( \phi \) tulee toteuttaa yhtälö
+\begin{align}
+   \prob \left[ \phi(x, \omega_{t}) = y \right] &= \int\limits_0^1 \; \indicator \left\{ \phi(x, w) = y \right\} \mathrm{d}w \\
+                                                &= \prob \left[ X_{t+1} = y \mid X_{t} = x \right] = P_{x,y} \quad \forall \; x, y \in S
+   \label{equation:stokastinen-esitys}
+\end{align}
+Yhtälön \ref{equation:stokastinen-esitys} toteuttavaa funktiota \( \phi \) ja satunnaislukujonoa \( (\omega_{t})_{t \geq 0} \) kutsutaan siirtymämatriisin P \textit{stokastiseksi esitykseksi}.
+
+Jos stokastisen prosessin alkutila on \( X_{0} = x_{0} \), sitä voidaan simuloida sen stokastisen esityksen avulla rekursiivisesti:
+\begin{equation}
+   X_{t+1} = \phi(X_{t}, \omega_{t})
+\end{equation}
+
+Mikäli stokastinen prosessi on epähomogeeninen ajassa, vaaditaan stokastiseen esitykseen jono deterministisiä funktioita \( (\phi^{(t)})_{t \geq 0} \), jotka ovat muotoa \( \phi^{(t)} : S \times [0, 1] \to S \; \forall \; t \geq 0 \). Funktioiden \( \phi^{(t)} \) tulee toteuttaa yhtälöä \ref{equation:stokastinen-esitys} vastaava ehto \( \forall \; t \geq 0 \):
+\begin{equation}
+   \prob \left[ \phi^{(t)}(x, \omega_{t}) = y \right] = \prob \left[ X_{t+1} = y \mid X_{t} = x \right] = P^{(t)}_{x,y} \quad \forall \; x, y \in S
+   \label{equation:epahom-stokastinen-esitys}
+\end{equation}
+
+Prosessin simulointi tehdään, kuten homogeenisessa tilanteessa, mutta rekursiofunktio valitaan funktiojonosta \( (\phi^{(t)})_{t \geq 0} \) järjestyksessä:
+\begin{equation}
+   X_{t+1} = \phi^{(t)}(X_{t}, \omega_{t})
+\end{equation}
+
+\subsection{Propositio}
+
+Edellä havaittiin, että NRRW-prosessi on epähomogeeninen ajassa. Sen stokastinen esitys on siis muotoa \( (\phi_{t}, \omega_{t})_{t \geq 0} \), missä funktiot \( \phi_{t} \) toteuttavat ehdon \ref{equation:epahom-stokastinen-esitys}. Muodostetaan sopiva jono deterministisiä funktioita NRRW-prosessille. Prosessin tilat ovat muotoa \( (v, G) \), missä \( G = (V, E) \) on verkko ja \( v \in V \) on verkon G solmu. Jakamalla rekursiofunktiot satunnaiskävely- ja satunnaisverkko-osiin saadaan niille korkeatasoinen muoto
+\begin{equation}
+   \phi^{(t)} \left( (v, G), w \right) = \left( \lambda^{(t)} \left( (v, G), w \right), \mu^{(t)} \left( \lambda^{(t)} \left( (v, G), w \right), G \right) \right)
+\end{equation}
+missä \( \lambda^{(t)} \) on satunnaiskävelyn \( (W_{t})_{t \geq 0} \) stokastisen esityksen rekursiofunktio ja \( \mu \) päivittää verkkoa G satunnaiskävelyn realisaation mukaisesti. Satunnaiskävelyn rekursiofunktio
+\begin{equation}
+   \lambda^{(t)} \left( (v, G), w \right) = 
+   \begin{cases}
+      v_{1} & w \in [0, \rho(G)_{i,1}) \\
+      v_{2} & w \in [\rho(G)_{i,1}, \rho(G)_{i,1} + \rho(G)_{i,2}) \\
+            & \quad \vdots \\
+      v_{\lfloor \frac{t}{s} \rfloor} & w \in [\rho(G)_{i,\lfloor \frac{t}{s} \rfloor - 1}, \rho(G)_{i,\lfloor \frac{t}{s} \rfloor - 1} + \rho(G)_{i,\lfloor \frac{t}{s} \rfloor}) 
+   \end{cases}
+\end{equation}
+missä \( \rho \) on funktio verkosta sen siirtymämatriisiin. Hyödyntäen määritelmän \ref{equation:psi} funktiota solmuja yhdistävien kaarien määrälle, saadaan kuvaukselle \( \rho \) alkioittainen määritelmä
+\begin{equation}
+   \rho^{(t)}(G)_{(i,j)} = \rho^{(t)} \left( (V, E) \right)_{(i,j)} = \frac{\psi^{(t)}(i, j)}{d_{t}(i)} = \frac{\psi^{(t)}(i, j)}{\sum_{w \in V} \psi^{(t)}(v_{i}, w)}
+\end{equation}
+missä kaksi viimeistä yhtäsuuruutta seuraa kaavoista \ref{equation:verkko-tn} ja \ref{equation:asteluku}.
+
+Stokastisen esityksen verkkoa päivittävä funktio määritellään
+\begin{equation}
+   \mu^{(t)} \left( v, (V, E) \right) =
+   \begin{cases}
+      \left( V \cup {v_{t}}, E \cup \{ v, v_{t} \} \right) & \text{kun } t \bmod s = 0 \\
+      \left( V, E \right) & \text{muulloin}
+   \end{cases}
+\end{equation}
+Se siis lisää verkon solmuun \( v \) uuden solmun \( v_{t} \) aina kun aika on jaollinen askelparametrillä s. Muulloin verkkoa ei muuteta.
+
+\subsection{Todistus}
+
+Esitän, että stokastisen esityksen \( (\phi^{(t)}, \omega_{t})_{t \geq 0} \) simuloima stokastinen prosessi on todellakin NRRW-prosessi askelparametrillä s.
+
 
 \subsection*{Rakenne}
 

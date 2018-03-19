@@ -1,5 +1,5 @@
 graph second {
    1 -- 1 -- 2;
-   1 [shape=circle, style=filled, fillcolor=grey]
+   1 [shape=circle, style=filled, fillcolor=grey, label=<<u>\N</u>>]
    2 [shape=circle]
 }
