@@ -435,7 +435,7 @@ Kasvavan verkon käsittelyn helpottamiseksi satunnaisverkon \( (G_{t})_{t \in \N
 \begin{equation}
 \begin{split}
    & \prob \left[ G_{t+s}^{s} = (V_{t} \cup \{ v_{n + 1} \}, E_{t} \cup \{ (v_{i}, v_{n + 1}) \}) \mid G_{t} = (V_{t}, E_{t}) \right] \\
-   &= \prob \left[ W_{t+s} = v_{i} \mid W_{t} = v_{n} \right] = (P_{t}^{s})_{n,i}
+   &= \prob \left[ W_{t+s} = v_{i} \mid W_{t} = v_{n}, G_{t} = (V_{t}, E_{t}) \right] = (P_{t}^{s})_{n,i}
 \end{split}
 \end{equation}
 
@@ -487,7 +487,7 @@ Koska satunnaisverkko kasvaa NRRW-prosessin edetessä, täytyy sen tilajoukon si
 
 \subsubsection{Siirtymätodennäköisyydet}
 
-NRRW-prosessin siirtymätodennäköisyydet ovat epähomogeenisia ajassa, sillä satunnaiskävelyn realisaatio kasvattaa sen omaa tilajoukkoa (NRRW-prosessin verkkoa) vain kun $ t \bmod s = 0 $. Siirtymätodennäköisyyksiä on siten syytä tarkastella kahdessa eri tapauksessa ajanhetken jaollisuuden mukaan. 
+NRRW-prosessin siirtymätodennäköisyydet ovat ajassa epähomongeenisia, sillä satunnaiskävelyn realisaatio kasvattaa sen omaa tilajoukkoa, eli NRRW-prosessin verkkoa, vain kun $ t \bmod s = 0 $. Siirtymätodennäköisyyksiä on siten syytä tarkastella kahdessa eri tapauksessa ajanhetken jaollisuuden mukaan. 
 
 Merkitään NRRW-prosessin tilaa hetkellä $ t $ yksinkertaisesti $ X_{t} = (W_{t}, \mathcal{G}^{s}_{t}) $. Jos $ v_{i}, v_{j} \in V $ ja $ G_{i}, G_{j} \in \mathcal{G} $, niin NRRW-prosessin siirtymätodennäköisyydet saavat esityksen
 \begin{align*}
@@ -497,9 +497,7 @@ Merkitään NRRW-prosessin tilaa hetkellä $ t $ yksinkertaisesti $ X_{t} = (W_{
 \end{align*}
 missä viimeinen yhtäsuuruus seuraa todennäköisyyden ehdollistamisesta satunnaisverkon $ \mathcal{G}^{s}_{t+1} $ realisaation suhteen ja tarpeettoman ehdon ($ \mathcal{G}^{s}_{t+1} = G_{i} $) poistamisesta.
 
-\vspace{1cm}
-
-Kun $ t + 1 \bmod s \neq 0 $, satunnaisverkko $ \mathcal{G}^{s}_{t} $ pysyy muuttumattomana todennäköisyydellä 1. Siten
+\paragraph{Kun $ t + 1 \bmod s \neq 0, $} satunnaisverkko $ \mathcal{G}^{s}_{t} $ pysyy muuttumattomana todennäköisyydellä 1. Siten
 \[
    \prob \left[ \mathcal{G}^{s}_{t+1} = G_{j} \mid \mathcal{G}^{s}_{t} = G_{j} \right] = 1
 \]
@@ -513,9 +511,7 @@ ja sen komplementti on mahdoton. Lausekkeen \ref{equation:siirtyma-tn} mukaisest
 \end{align*}
 missä viimeinen yhtäsuuruus pohjautuu kaavan \ref{equation:verkko-tn} lausekkeeseen.
 
-\vspace{1cm}
-
-Kun $ t + 1 \bmod s = 0 $, satunnaisverkko $ \mathcal{G}^{s}_{t} $ muuttuu satunnaiskävelyn $ W_{t+1} $ realisaation mukaisesti.
+\paragraph{Kun $ t + 1 \bmod s = 0, $} satunnaisverkko $ \mathcal{G}^{s}_{t} $ muuttuu satunnaiskävelyn $ W_{t+1} $ realisaation mukaisesti.
 \begin{align*}
    P_{i,j} &= \prob \left[ W_{t+1} = v_{i}, \mathcal{G}^{s}_{t+1} = G_{i} \mid W_{t} = v_{j}, \mathcal{G}^{s}_{t} = G_{j} \right] \\
    \quad &= \prob \left[ W_{t+1} = v_{i} \mid W_{t} = v_{j}, \mathcal{G}^{s}_{t} = G_{j} \right] \prob \left[ \mathcal{G}^{s}_{t+1} = G_{i} \mid W_{t+1} = v_{i}, W_{t} = v_{j}, \mathcal{G}^{s}_{t} = G_{j} \right]
@@ -564,11 +560,11 @@ Prosessin simulointi tehdään, kuten homogeenisessa tilanteessa, mutta rekursio
 
 Edellä havaittiin, että NRRW-prosessi on epähomogeeninen ajassa. Sen stokastinen esitys on siis muotoa \( (\phi_{t}, \omega_{t})_{t \geq 0} \), missä funktiot \( \phi_{t} \) toteuttavat ehdon \ref{equation:epahom-stokastinen-esitys}. Muodostetaan sopiva jono deterministisiä funktioita NRRW-prosessille. Prosessin tilat ovat muotoa \( (v, G) \), missä \( G = (V, E) \) on verkko ja \( v \in V \) on verkon G solmu. Jakamalla rekursiofunktiot satunnaiskävely- ja satunnaisverkko-osiin saadaan niille korkeatasoinen muoto
 \begin{equation}
-   \phi^{(t)} \left( (v, G), w \right) = \left( \lambda^{(t)} \left( (v, G), w \right), \mu^{(t)} \left( \lambda^{(t)} \left( (v, G), w \right), G \right) \right)
+   \phi^{(t)} \left( (v, G), w \right) = \left( \lambda\left( (v, G), w \right), \mu^{(t)} \left( \lambda\left( (v, G), w \right), G \right) \right)
 \end{equation}
-missä \( \lambda^{(t)} \) on satunnaiskävelyn \( (W_{t})_{t \geq 0} \) stokastisen esityksen rekursiofunktio ja \( \mu \) päivittää verkkoa G satunnaiskävelyn realisaation mukaisesti. Satunnaiskävelyn rekursiofunktio
+missä \( \lambda \) on satunnaiskävelyn \( (W_{t})_{t \geq 0} \) stokastisen esityksen rekursiofunktio parametriksi annetussa verkossa G ja \( \mu \) päivittää verkkoa G satunnaiskävelyn realisaation mukaisesti. Satunnaiskävelyn rekursiofunktio
 \begin{equation}
-   \lambda^{(t)} \left( (v, G), w \right) = 
+   \lambda \left( (v_{i}, G), w \right) = 
    \begin{cases}
       v_{1} & w \in [0, \rho(G)_{i,1}) \\
       v_{2} & w \in [\rho(G)_{i,1}, \rho(G)_{i,1} + \rho(G)_{i,2}) \\
@@ -578,7 +574,7 @@ missä \( \lambda^{(t)} \) on satunnaiskävelyn \( (W_{t})_{t \geq 0} \) stokast
 \end{equation}
 missä \( \rho \) on funktio verkosta sen siirtymämatriisiin. Hyödyntäen määritelmän \ref{equation:psi} funktiota solmuja yhdistävien kaarien määrälle, saadaan kuvaukselle \( \rho \) alkioittainen määritelmä
 \begin{equation}
-   \rho^{(t)}(G)_{(i,j)} = \rho^{(t)} \left( (V, E) \right)_{(i,j)} = \frac{\psi^{(t)}(i, j)}{d_{t}(i)} = \frac{\psi^{(t)}(i, j)}{\sum_{w \in V} \psi^{(t)}(v_{i}, w)}
+   \rho(G)_{i,j} = \rho\left( (V, E) \right)_{i,j} = \frac{\psi^{(t)}(i, j)}{d_{t}(i)} = \frac{\psi^{(t)}(i, j)}{\sum_{w \in V} \psi^{(t)}(v_{i}, w)}
 \end{equation}
 missä kaksi viimeistä yhtäsuuruutta seuraa kaavoista \ref{equation:verkko-tn} ja \ref{equation:asteluku}.
 
@@ -594,8 +590,29 @@ Se siis lisää verkon solmuun \( v \) uuden solmun \( v_{t} \) aina kun aika on
 
 \subsection{Todistus}
 
-Esitän, että stokastisen esityksen \( (\phi^{(t)}, \omega_{t})_{t \geq 0} \) simuloima stokastinen prosessi on todellakin NRRW-prosessi askelparametrillä s.
+Esitän, että stokastisen esityksen \( (\phi^{(t)}, \omega_{t})_{t \geq 0} \) simuloima stokastinen prosessi on todellakin NRRW-prosessi askelparametrillä s. NRRW-prosessin siirtymätodennäköisyydet on laskettu kappaleessa 2.3.1. NRRW-prosessin käyttäytyminen ajanhetkellä $ t $ riippuu siitä, onko $ t $ jaollinen askelparametrilla $ s $. Osoitetaan stokastisen esitykseen yhdenmukaisuus NRRW-prosessin kanssa molemmissa tapauksissa. Olkoon $ X_{t} = (W_{t}, \mathcal{G}^{s}_{t}) $ NRRW-prosessin tila hetkellä $ t $.
 
+\paragraph{Kun $ t + 1 \bmod s \neq 0 $}
+
+\begin{align*}
+   \prob \left[ \phi(x, \omega_{t}) = y \right] &= \int\limits_0^1 \; \indicator \left\{ \phi(x, w) = y \right\} \mathrm{d}w \\
+                                                &= \int\limits_0^1 \; \indicator \left\{ \left( \lambda\left( (v_{x}, G_{x}), w \right), \mu^{(t)} \left( \lambda\left( (v_{x}, G_{x}), w \right), G_{x} \right) \right) = (v_{y}, G_{y}) \right\} \mathrm{d}w \\
+                                                &= \int\limits_0^1 \; \indicator \left\{ \lambda\left( (v_{x}, G_{x}), w \right) = v_{y} \right\} \indicator \left\{ \mu^{(t)} \left( \lambda\left( (v_{x}, G_{x}), w \right), G_{x} \right) = G_{y} \right\} \mathrm{d}w \\
+                                                &= \indicator \left\{ G_{x} = G_{y} \right\} \int\limits_0^1 \; \indicator \left\{ \lambda\left( (v_{x}, G_{x}), w \right) = v_{y} \right\} \mathrm{d}w
+\end{align*}
+Jos $ G_{y} = G_{x} $
+\[
+   \prob \left[ \phi(x, \omega_{t}) = y \right] = \int\limits_0^1 \; \indicator \left\{ \lambda\left( (v_{x}, G_{x}), w \right) = v_{y} \right\} \mathrm{d}w = \rho(G_{x})_{x,x+1} = \frac{\psi^{(t)}(v_{i}, v_{j})}{d_{t}(v_{i})}
+\]
+Jos $ G_{y} \neq G_{x} $ niin $ \prob \left[ \phi(x, \omega_{t}) = y \right] = 0 $. Selvästi nyt
+\[
+   \prob \left[ \phi(x, \omega_{t}) = y \right] = \prob \left[ X_{t+1} = y \mid X_{t} = x \right]
+\]
+kun $ t + 1 \bmod s \neq 0 $.
+
+\paragraph{Kun $ t + 1 \bmod s = 0 $}
+
+...
 
 \clearpage
 %% Lähdeluettelo
