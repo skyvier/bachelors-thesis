@@ -57,6 +57,7 @@
 \usepackage{array}
 \usepackage{cellspace}
 \usepackage{dsfont}
+\usepackage{subcaption}
 \usepackage[export]{adjustbox}
 \usepackage[finnish]{babel}
 
@@ -69,7 +70,7 @@
 \newcommand{\indicator}{\mathopen{\mathds{1}}}
 \newcommand*{\prob}{\mathbb{P}}
 
-\newcommand{\subfigure}[2]{%
+\newcommand{\mysubfigure}[2]{%
   \includegraphics[width=#2, valign=t, trim=2 2 2 2, clip]{#1}
 }
 
@@ -174,7 +175,7 @@ kaaren läpi satunnaiseen solmuun, jonka naapuriksi lisätään uusi solmu. Uude
 Tätä prosessia jatketaan satunnaiskävelijän viimeisimmästä tilasta, ja prosessin toistaminen kasvattaa satunnaisen puurakenteen. 
 Mallin ominaisuudet määrää siis askelparametri, s. NRRW-malli mukailee reaalimaailman verkoille tyypillisiä ominaisuuksia, 
 kuten suosivaa kiinnittymistä (eng. preferential attachment). Mallissa satunnaiskävelyprosessi
-ja verkkoa kuvaavan satunnaisprosessi ovat voimakkaasti riippuvaisia. Prosessin käsittelyä
+ja verkkoa kuvaava satunnaisprosessi ovat voimakkaasti riippuvaisia. Prosessin käsittelyä
 voidaan helpottaa osoittamalla, että se on yhdenmukainen yksinkertaisemman stokastisen prosessin kanssa.
 Näytän, että NRRW-malli on stokastisesti yhdenmukainen rakentamani riippumattomien, tasajakautuneiden
 satunnaislukujen määräämän mallin kanssa. Lopuksi käytän tätä vaihtoehtoista esitystapaa puun solmujen palautuvuutta
@@ -392,15 +393,15 @@ NRRW-prosessi on kahden toisistaan riippuvan stokastisen prosessin pari, \( ( \G
    {\renewcommand{\arraystretch}{1.1}
    \begin{tabular}{|F|F|F|F|F|}
    \hline
-   \subfigure{graphs/even_example/1.jpg}{14.8mm}
+   \mysubfigure{graphs/even_example/1.jpg}{14.8mm}
    &
-   \subfigure{graphs/even_example/2.jpg}{14.8mm}
+   \mysubfigure{graphs/even_example/2.jpg}{14.8mm}
    & 
-   \subfigure{graphs/even_example/3.jpg}{23.4mm}
+   \mysubfigure{graphs/even_example/3.jpg}{23.4mm}
    &
-   \subfigure{graphs/even_example/4.jpg}{23.4mm}
+   \mysubfigure{graphs/even_example/4.jpg}{23.4mm}
    &
-   \subfigure{graphs/even_example/5.jpg}{23.4mm}
+   \mysubfigure{graphs/even_example/5.jpg}{23.4mm}
    \tabularnewline
    \hline
    t = 0 & t = 2 & t = 4 & t = 6 & t = 8
@@ -569,9 +570,9 @@ missä \( \lambda \) on satunnaiskävelyn \( (\Wrandom_{t})_{t \geq 0} \) stokas
       v_{\mid V \mid} & w \in [\rho(G)_{i,\mid V \mid - 1}, \rho(G)_{i,\mid V \mid - 1} + \rho(G)_{i,\mid V \mid}) 
    \end{cases}
 \end{equation}
-missä \( \rho \) on funktio verkosta sen siirtymämatriisiin ja $ \mid V \mid $ on verkon $ G $ solmujen lukumäärä. Hyödyntäen määritelmän \ref{equation:psi} funktiota solmuja yhdistävien kaarien määrälle, saadaan kuvaukselle \( \rho \) alkioittainen määritelmä
+missä \( \rho \) on funktio verkosta sen siirtymämatriisiin ja $ |V| $ on verkon $ G $ solmujen lukumäärä. Hyödyntäen määritelmän \ref{equation:psi} funktiota solmuja yhdistävien kaarien määrälle, saadaan kuvaukselle \( \rho \) alkioittainen määritelmä
 \begin{equation}
-   \rho(G)_{i,j} = \rho\left( (V, E) \right)_{i,j} = \frac{\psi^{(t)}(i, j)}{d_{t}(i)} = \frac{\psi^{(t)}(i, j)}{\sum_{w \in V} \psi^{(t)}(v_{i}, w)}
+   \rho(G)_{i,j} = \rho\left( (V, E) \right)_{i,j} = \frac{\psi^{(t)}(i, j)}{d_{G}(i)} = \frac{\psi^{(t)}(i, j)}{\sum_{w \in V} \psi^{(t)}(v_{i}, w)}
 \end{equation}
 missä kaksi viimeistä yhtäsuuruutta seuraa kaavoista \ref{equation:verkko-tn} ja \ref{equation:asteluku}.
 
@@ -625,7 +626,13 @@ Selvästi rakentamani stokastinen esitys on ekvivalentti NRRW-prosessin kanssa.
 
 \section{Parillinen prosessi}
 
-NRRW-prosessin käyttäytymiseen vaikuttaa voimakkaasti askelparametrin $ s $ parillisuus. Parillisen parametrin prosessissa satunnaiskävely $ (\Wrandom)_{t \in \N} $ on palautuva eli se vierailee kaikissa sen tilajoukon solmuissa äärettömän monta kertaa lähes varmasti. Lisäksi satunnaisverkon $ (\Grandom^{s}_{t})_{t \in \N} $ sellaisten solmujen, joiden asteluku on yli kaksi, astelukujen jakauma on potenssilain alhaalta rajoittama. 
+%\begin{figure}[htb]
+%\centering
+%\includegraphics[width=.8\textwidth]{pictures/simulation_4_50000.png}
+   %\caption{Tietokonesimuloitu NRRW-prosessi parillisella askelparametrilla $ s = 4 $. \label{figure:oma_simulaatio}}
+%\end{figure}
+
+NRRW-prosessin käyttäytymiseen vaikuttaa voimakkaasti askelparametrin $ s $ parillisuus. Parillisen parametrin prosessissa satunnaiskävely $ (\Wrandom_{t})_{t \in \N} $ on palautuva eli se vierailee kaikissa sen tilajoukon solmuissa äärettömän monta kertaa lähes varmasti. Lisäksi satunnaisverkon $ (\Grandom^{s}_{t})_{t \in \N} $ sellaisten solmujen, joiden asteluku on yli kaksi, astelukujen jakauma on potenssilain alhaalta rajoittama. 
 
 Erityisesti vain parillisen askelparametrin NRRW-prosessissa kaksi peräkkäistä uutta solmua voidaan lisätä samaan verkon solmuun. Parittoman askelparametrin prosessissa tämä ei ole mahdollista muualla kuin puun juuressa, sillä satunnaiskävely siirtyy $ s $:ssä askeleessa puun parittomalta tasolta parilliselle ja parilliselta tasolta parittomalle. Parillisen askelparametrin prosessissa satunnaiskävelyn pariteetti muuttuu vain, jos satunnaiskävely kulkee puun juuren silmukan läpi.
 
@@ -635,11 +642,41 @@ Tämä parillisen prosessin ominaisuus liittyy vahvasti suosivaan kiinnittymisee
 
 \subsection{Astelukujen jakauma}
 
+\begin{figure}[htb]
+\centering
+   \begin{subfigure}[b]{0.47\textwidth}
+      \includegraphics[width=\textwidth]{pictures/approx_hist.jpg}
+      \caption{Jotain. \label{figure:approx_hist}}
+   \end{subfigure}
+   \quad
+   \begin{subfigure}[b]{0.47\textwidth}
+      \includegraphics[width=\textwidth]{pictures/approx_cdf.jpg}
+      \caption{Jotain. \label{figure:approx_cdf}}
+   \end{subfigure}
+\end{figure}
+
+\begin{theorem}
+   Olkoon NRRW-prosessin askelparametri $ s $ parillinen. Oletetaan, että $ T_{j} $ on se ajanhetki, jolloin solmuun $ j $ lisätään sen ensimmäinen naapuri. Tällöin kaikilla $ t \geq T_{j} $ ja $ k \in \{1,\ldots,\lfloor \frac{t-T_{j}}{s} \rfloor + 1\} $ pätee, että
+   \[
+      \renewcommand{\arraystretch}{2.0}
+      \begin{array}{lr}
+         \prob \left[ d_{t}(j) \geq k + 1 \mid T_{j} < \infty \right] \geq k^{-\frac{s}{2}},             & \text{jos} \; j \neq \text{root} \\
+         \prob \left[ d_{t}(j) \geq k + 2 \right] \geq \left( \frac{k(k+1)}{2} \right)^{-\frac{s}{2}},   & \text{jos} \; j = \text{root}
+      \end{array}
+   \]
+\end{theorem}
+
 \subsection{Palautuvuus}
 
 \begin{theorem}
-Olkoon $ i $ solmu ja $ \{i, j\} $ kaari NRRW-prosessin verkossa. Jos $ i $ on palautuva, niin satunnaiskävely $ (\Wrandom)_{t \in \N} $ kulkee kaaren $ \{i, j\} $ läpi äärettömän monta kertaa lähes varmasti.
+Olkoon $ i $ solmu ja $ \{i, j\} $ kaari NRRW-prosessin verkossa. Jos $ i $ on palautuva, niin satunnaiskävely $ (\Wrandom_{t})_{t \in \N} $ kulkee kaaren $ \{i, j\} $ läpi äärettömän monta kertaa lähes varmasti.
 \end{theorem}
+
+\begin{proof}
+TODO: INSERT PROOF HERE!
+\end{proof}
+
+\section{Yhteenveto}
 
 \clearpage
 %% Lähdeluettelo
