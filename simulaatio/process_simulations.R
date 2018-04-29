@@ -14,6 +14,8 @@ process_simulations <- function (folder_path, step_parameter) {
       return(unlist(mapped))
    }
 
+   # Calculations
+
    files <- list.files(folder_path, pattern="^degrees_[0-9]+.csv")
 
    complete_data <- c()
@@ -22,27 +24,35 @@ process_simulations <- function (folder_path, step_parameter) {
       complete_data <- c(complete_data, degrees) 
    }
 
-   ks <- 1:max(complete_data)
+   ks <- 1:(max(complete_data)-1)
    sample_cdf <- approx_cdf(complete_data, ks)
    lower_bound_cdf <- ks^(-step_parameter/2)
 
-   jpeg(file.path(folder_path, 'approx_cdf.jpg'))
+   # Drawing graphs
 
-   plot(ks, lower_bound_cdf, log="y", type="l", lty=3, lwd=2, 
-        ylab="Komplementaarinen kertymäfunktio", xlab="Asteluku",
-        main="Komplementaarinen kertymäfunktio ja alaraja")
-   lines(ks, sample_cdf, lty=5, lwd=2)
-   grid()
-   legend("topright", legend=c("Alaraja", "Approksimaatio"), lty=c(3, 5), lwd=c(2, 2), cex=1, inset=0.03)
+   common.theme <- theme_hc()
 
-   dev.off()
+   y <- c(sample_cdf, lower_bound_cdf)
+   x <- rep(ks, 2)
+   groups <- factor(c(rep("Approksimaatio", length(ks)), rep("Alaraja", length(ks))))
+   cdf.data <- data.frame(x = x, y = y, groups = groups)
+
+   cdf.plot <- ggplot(cdf.data, aes(x, y, linetype=groups)) + 
+      scale_y_log10(name = "Komplementaarinen kertymäfunktio") +
+      scale_x_continuous(name="Asteluku") + geom_line(size=1) +
+      scale_color_manual(labels=c("Approksimaatio", "Alaraja")) +
+      ggtitle("Komplementaarinen kertymäfunktio ja sen alaraja") +
+      common.theme + theme(plot.title = element_text(hjust=0.5), 
+                         legend.position = c(0.9, 0.9), legend.title = element_blank())
+   ggsave(filename=file.path(folder_path, 'approx_cdf.jpg'), plot=cdf.plot)
 
    init_indices <- 1:(0.998*length(complete_data))
-   frequencies <- data.frame(init = sort(complete_data)[init_indices])
-   hist.plot <- ggplot(frequencies, aes(x = init)) + geom_histogram(col="black", fill="grey") + 
+
+   hist.frequencies <- data.frame(init = sort(complete_data)[init_indices])
+   hist.plot <- ggplot(hist.frequencies, aes(x = init)) + geom_histogram(col="black", fill="grey") + 
       scale_x_log10(name = "Asteluku", breaks=c(2,10,100,1000,5000)) + 
       scale_y_continuous(name = "Määrä") + ggtitle("Astelukujen esiintyvyys") + 
-      theme_hc() + theme(plot.title = element_text(hjust=0.5))
+      common.theme + theme(plot.title = element_text(hjust=0.5))
    ggsave(filename=file.path(folder_path, 'approx_hist.jpg'), plot=hist.plot)
 
    return(list(sample_cdf = sample_cdf, lower_bound_cdf = lower_bound_cdf, data = complete_data))
