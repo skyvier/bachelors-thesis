@@ -167,19 +167,21 @@
 %% myös tiivistelmälomakkeeseen.
 %%
 \thesisabstract{
-Nykymaailma on täynnä erilaisia verkkorakenteita Internetistä sosiaalisiin piireihin.
-Verkkojen kasvun mallintaminen onkin kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana.
-Yksi tällainen kasvumalli on No Restart Random Walk (NRRW), jossa satunnaiskävelijä
-kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Kävelijä lähtee alkusolmusta, kulkee s:n
-kaaren läpi satunnaiseen solmuun, jonka naapuriksi lisätään uusi solmu. Uuden solmun asteluku on aina yksi. 
+Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piireihin. Useimmat
+niistä syntyvät näennäisesti hyvinkin toisistaan poikkeavista prosesseista, mutta niille on kuitenkin tyypillistä
+skaalautumaton (eng. scale-free) rakenne. Skaalautumattomia verkkoja näyttää syntyvän erityisesti sellaisista
+prosesseista, jotka noudattavat kasvaessaan suosivaa kiinnittymistä (eng. preferential attachment). Tällaisten 
+kasvuprosessien kehittäminen onkin kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana. Yksi sellainen kasvumalli 
+on No Restart Random Walk (NRRW), jossa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Kävelijä 
+lähtee alkusolmusta, kulkee s:n kaaren läpi satunnaiseen solmuun, ja sen naapuriksi lisätään uusi solmu. Uuden solmun asteluku on aina yksi. 
 Tätä prosessia jatketaan satunnaiskävelijän viimeisimmästä tilasta, ja prosessin toistaminen kasvattaa satunnaisen puurakenteen. 
 Mallin ominaisuudet määrää siis askelparametri, s. NRRW-malli mukailee reaalimaailman verkoille tyypillisiä ominaisuuksia, 
-kuten suosivaa kiinnittymistä (eng. preferential attachment). Mallissa satunnaiskävelyprosessi
-ja verkkoa kuvaava satunnaisprosessi ovat voimakkaasti riippuvaisia. Prosessin käsittelyä
-voidaan helpottaa osoittamalla, että se on yhdenmukainen yksinkertaisemman stokastisen prosessin kanssa.
-Näytän, että NRRW-malli on stokastisesti yhdenmukainen rakentamani riippumattomien, tasajakautuneiden
-satunnaislukujen määräämän mallin kanssa. Lopuksi käytän tätä vaihtoehtoista esitystapaa puun solmujen palautuvuutta
-koskevan lauseen todistukseen.
+kuten suosivaa kiinnittymistä. Sen rakentaman verkon ominaisuudet riippuvat kuitenkin voimakkaasti askelparametrista.
+Malli ei generoi skaalautumattomia verkkoja, mutta se demonstroi kiinnostavan yhteyden satunnaisverkon astelukujen jakauman
+ja sitä kasvattavan satunnaiskulun palautuvuuden välillä. Tämän yhteyden ymmärtäminen on askel kohti entistä realistisempia
+verkkojen kasvumalleja. Tässä kandidaatintyössä keskityn tarkastelemaan parillisen askelparametrin NRRW-malleja. Muodostan
+NRRW-prosessille erään stokastisen esityksen, todistan sen oikeaksi ja hyödynnän sitä parillisen askelparametrin NRRW-mallin
+ominaisuuksien tutkimiseen.
 }
 
 %% Tekijänoikeusteksti. Tekijänoikeus on tekijällä riippumatta siitä onko
@@ -232,21 +234,18 @@ koskevan lauseen todistukseen.
 %% Tiivistelmän tekstiosa
 %%
 \begin{abstractpage}[finnish]
-Nykymaailma on täynnä erilaisia verkkorakenteita Internetistä sosiaalisiin piireihin.
-Verkkojen kasvun mallintaminen onkin kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana.
-Yksi tällainen kasvumalli on \textit{No Restart Random Walk} (NRRW), jossa satunnaiskävelijä
-kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Kävelijä lähtee alkusolmusta, kulkee \textit{s}:n
-kaaren läpi satunnaiseen solmuun, jonka naapuriksi lisätään uusi solmu. Uuden solmun asteluku on aina yksi. 
-Tätä prosessia jatketaan satunnaiskävelijän viimeisimmästä tilasta, ja prosessin toistaminen kasvattaa satunnaisen puurakenteen. 
-Mallin ominaisuudet määrää siis askelparametri, \textit{s}.
+TODO: real networks -> preferential attachment
+Yksi kiinnostava kasvumalli on \textit{No Restart Random Walk} (NRRW), jossa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa 
+kulkiessaan siinä. Kävelijä lähtee alkusolmusta, kulkee $ s $:n kaaren läpi satunnaiseen solmuun, ja sen naapuriksi lisätään 
+uusi solmu. Uuden solmun asteluku on aina yksi. Tätä prosessia jatketaan satunnaiskävelijän viimeisimmästä tilasta, ja prosessin 
+toistaminen kasvattaa satunnaisen puurakenteen. Mallin ominaisuudet määrää siis askelparametri, $ s $. 
 
-NRRW-malli mukailee reaalimaailman verkoille tyypillisiä ominaisuuksia, 
-kuten suosivaa kiinnittymistä (\textit{eng. preferential attachment}). Mallissa satunnaiskävelyprosessi
-ja verkkoa kuvaavan satunnaisprosessi ovat voimakkaasti riippuvaisia. Prosessin käsittelyä
-voidaan helpottaa osoittamalla, että se on yhdenmukainen yksinkertaisemman stokastisen prosessin kanssa.
-Näytän, että NRRW-malli on stokastisesti yhdenmukainen rakentamani riippumattomien, tasajakautuneiden
-satunnaislukujen määräämän mallin kanssa. Lopuksi käytän tätä vaihtoehtoista esitystapaa puun solmujen palautuvuutta
-koskevan lauseen todistukseen.
+NRRW-malli mukailee reaalimaailman verkoille tyypillistä suosivaa kiinnittymistä. Sen rakentaman verkon ominaisuudet riippuvat 
+kuitenkin voimakkaasti askelparametrista. Malli ei generoi skaalautumattomia verkkoja, mutta se demonstroi kiinnostavan yhteyden 
+satunnaisverkon astelukujen jakauman ja sitä kasvattavan satunnaiskulun palautuvuuden välillä. Tämän yhteyden ymmärtäminen on askel 
+kohti entistä realistisempia verkkojen kasvumalleja. Tässä kandidaatintyössä keskityn tarkastelemaan parillisen askelparametrin 
+NRRW-malleja. Muodostan NRRW-prosessille erään stokastisen esityksen, todistan sen oikeaksi ja hyödynnän sitä parillisen askelparametrin 
+NRRW-mallin ominaisuuksien tutkimiseen.
 \end{abstractpage}
 
 %% \thesisabstract -makrossa kirjoitettu teksti on tallennettu \abstractext 
@@ -349,7 +348,12 @@ i.i.d.     & riippumaton ja identtisesti jakautunut\\
 %% 
 \thispagestyle{empty}
 
-TODO: Esimerkkejä reaalimaailman verkoista!
+Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piireihin. Useimmat niistä syntyvät näennäisesti hyvinkin toisistaan poikkeavista prosesseista, 
+mutta niille on kuitenkin tyypillistä skaalautumaton (eng. scale-free) rakenne. Skaalautumattoman verkon astelukujen jakauman määrittää jonkinlainen potenssilaki, ja
+niitä esiintyy ...
+Skaalautumattomia verkkoja näyttää syntyvän erityisesti sellaisista prosesseista, 
+jotka noudattavat kasvaessaan suosivaa kiinnittymistä (eng. preferential attachment). Tällaisten kasvuprosessien kehittäminen onkin kiinnittänyt tutkijoiden huomion 
+kuluneen vuosikymmenen aikana. 
 
 Mallin rakenne pyritään valitsemaan siten, että se mukailee parhaalla mahdollisella tavalla joitain todellisia verkostoja. Monille tosielämän verkoille on tyypillistä suosiva kiinnittyminen (\textit{eng. preferential attachment}) sekä se, että verkon solmujen astejakauma ei ole eksponentiaalisesti rajoitettu. Suosivalla kiinnittymisellä tarkoitetaan satunnaisverkkojen yhteydessä sitä, että uusia solmuja liittyy todennäköisimmin sellaisiin solmuihin, joilla on jo ennestään korkea asteluku. 
 Yksi lupaava kasvumalli on \textit{No Restart Random Walk} (NRRW), jossa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Nimen mukaisesti satunnaiskävely ei ala koskaan alusta, vaan jatkuu katkeamatta verkon kasvaessa. Prosessin ominaisuudet määrää askelparametri, s, ja se kehittyy seuraavanlaisen algoritmin mukaisesti:
@@ -636,9 +640,13 @@ NRRW-prosessin käyttäytymiseen vaikuttaa voimakkaasti askelparametrin $ s $ pa
 
 Erityisesti vain parillisen askelparametrin NRRW-prosessissa kaksi peräkkäistä uutta solmua voidaan lisätä samaan verkon solmuun. Parittoman askelparametrin prosessissa tämä ei ole mahdollista muualla kuin puun juuressa, sillä satunnaiskävely siirtyy $ s $:ssä askeleessa puun parittomalta tasolta parilliselle ja parilliselta tasolta parittomalle. Parillisen askelparametrin prosessissa satunnaiskävelyn pariteetti muuttuu vain, jos satunnaiskävely kulkee puun juuren silmukan läpi.
 
-Uuden, peräkkäisen solmun lisääminen samaan solmuun parillisessa NRRW-verkossa on paitsi mahdollista niin myös sitä todennäköisempää mitä suurempi kyseisen solmun asteluku on. Koska uusia solmuja lisätään ennen kaikkea saman pariteetin tasoille puussa, jäävät uudet solmut lehdiksi (\textit{eng. leaf}), kunnes prosessin pariteetti vaihtuu. Lehtisolmuista voi siirtyä vain takaisin lähtöpisteeseen, joten todennäköisyys palata johonkin satunnaisverkon solmuun suurenee, kun solmussa vieraillaan ja sen asteluku kasvaa.
+Uuden, peräkkäisen solmun lisääminen samaan solmuun parillisessa NRRW-verkossa on paitsi mahdollista niin myös sitä todennäköisempää mitä suurempi kyseisen solmun asteluku on. Koska uusia solmuja lisätään ennen kaikkea saman pariteetin tasoille puussa, jäävät uudet solmut lehdiksi (\textit{eng. leaf}), kunnes prosessin pariteetti vaihtuu. Lehtisolmuista voi siirtyä vain takaisin lähtöpisteeseen, joten todennäköisyys palata johonkin satunnaisverkon solmuun suurenee, kun solmussa vieraillaan ja sen asteluku kasvaa. Kuvaaja \ref{figure:oma_simulaatio} havainnollistaa, kuinka lehtisolmuja kasaantuu tähtimaiseen muodostelmaan joidenkin solmujen ympärille.
 
-Tämä parillisen prosessin ominaisuus liittyy vahvasti suosivaan kiinnittymiseen (\textit{eng. preferential attachment}), sillä uusia solmuja kertyy erityisen todennäköisesti sellaisille verkon solmuille, joilla on jo ennestään paljon naapureita. Suosiva kiinnittyminen on tosielämän verkkorakenteiden kannalta kiinnostava ominaisuus. Keskitynkin tässä kandidaatintyössä parillisen NRRW-prosessin ominaisuuksia käsittelemiseen.
+Tämä parillisen prosessin ominaisuus liittyy vahvasti suosivaan kiinnittymiseen (\textit{eng. preferential attachment}), sillä uusia solmuja kertyy erityisen todennäköisesti sellaisille verkon solmuille, joilla on jo ennestään paljon naapureita. Suosiva kiinnittyminen on tosielämän verkkorakenteiden kannalta kiinnostava ominaisuus. Käsite on yhteydessä sosialogiseen Matteus-efektiin, joka tarkoittaa etujen kasaantumista niille, joilla niitä on jo ennestään. Efektin ydinajatus tiivistetään usein lausahdukseen: \textit{"Rikkaat rikastuu ja köyhät köyhtyy"}. 
+
+TODO: Preferential attachment in IOTA?
+
+Keskitynkin tässä kandidaatintyössä parillisen NRRW-prosessin ominaisuuksia käsittelemiseen.
 
 \subsection{Astelukujen jakauma}
 
