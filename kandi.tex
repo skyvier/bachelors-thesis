@@ -348,38 +348,62 @@ i.i.d.     & riippumaton ja identtisesti jakautunut\\
 %% 
 \thispagestyle{empty}
 
-Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piireihin. Useimmat niistä syntyvät näennäisesti hyvinkin toisistaan poikkeavista prosesseista, 
-mutta niille on kuitenkin tyypillistä skaalautumaton (eng. scale-free) rakenne. Skaalautumattoman verkon astelukujen jakauman määrittää jonkinlainen potenssilaki, ja
-niitä esiintyy ...
-Skaalautumattomia verkkoja näyttää syntyvän erityisesti sellaisista prosesseista, 
-jotka noudattavat kasvaessaan suosivaa kiinnittymistä (eng. preferential attachment). Tällaisten kasvuprosessien kehittäminen onkin kiinnittänyt tutkijoiden huomion 
-kuluneen vuosikymmenen aikana. 
+Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piireihin ja niiden syvällinen ymmärtäminen on tärkeämpää kuin koskaan. Verkkoteoria on matematiikan ala, 
+joka pyrkii ymmärtämään solmuista ja niitä yhdistävistä kaarista rakentuvia abstrakteja verkkoja. Koska verkostoja tarkastellaan riittävän abstraktilla tasolla, verkkoteorian 
+tulokset pätevät sovelluskohteesta riippumatta. Sama looginen rakenne, verkko, voi kuvata niin kaupunkien välisiä tieyhteyksiä kuin nettisivujen 
+välisiä linkkejäkin, ja verkkoteorian tulokset ovat aina yhtä oleellisia. Vain verkon tulkinta vaihtuu. 
 
-Mallin rakenne pyritään valitsemaan siten, että se mukailee parhaalla mahdollisella tavalla joitain todellisia verkostoja. Monille tosielämän verkoille on tyypillistä suosiva kiinnittyminen (\textit{eng. preferential attachment}) sekä se, että verkon solmujen astejakauma ei ole eksponentiaalisesti rajoitettu. Suosivalla kiinnittymisellä tarkoitetaan satunnaisverkkojen yhteydessä sitä, että uusia solmuja liittyy todennäköisimmin sellaisiin solmuihin, joilla on jo ennestään korkea asteluku. 
-Yksi lupaava kasvumalli on \textit{No Restart Random Walk} (NRRW), jossa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Nimen mukaisesti satunnaiskävely ei ala koskaan alusta, vaan jatkuu katkeamatta verkon kasvaessa. Prosessin ominaisuudet määrää askelparametri, s, ja se kehittyy seuraavanlaisen algoritmin mukaisesti:
+Yksi tärkeä askel kohti reaalimaailman verkkojen ymmärtämistä on erilaisten kasvumallien luominen. Kun tiedämme, miten ja miksi verkot kehittyvät sellaisiksi kuin ne ovat,
+pystymme simuloimaan niitä ja ennustamaan niiden kehitystä. Kuluneina vuosikymmeninä onkin kehitetty lukuisia erilaisia verkkojen kasvumalleja. Niiden generoimien verkkojen
+topologiassa on kiinnitetty huomioita moniin erilaisiin suureisiin, mutta yksi kiinnostavimmista ominaisuuksista on solmujen astelukujen jakauma. Empiiriset kokeet ovat osoittaneet, 
+että monet suuret ja kiinnostavat verkot, kuten Internet, ovat skaalautumattomia (eng. scale-free) \cite{Clauset}. Skaalautumattoman verkon astelukujen jakauman määrittää jokin potenssilaki 
+($ \prob \left[ k \right] = k^{\gamma} $). Yksinkertaistaen tämä tarkoittaa sitä, että ääriarvot, eli sellaiset solmut, joilla on hyvin korkea asteluku, ovat skaalautumattomissa verkoissa
+verrattain yleisiä. \cite{Babarasi-kirja} 
 
+Monet tosielämän verkot syntyvät näennäisesti hyvinkin toisistaan poikkeavista prosesseista, mutta niille on kuitenkin tyypillistä skaalautumaton rakenne. Tämä viittaa siihen,
+että kyseisten verkkojen kasvu pohjautuu samankaltaisiin stokastisiin mekanismeihin. Näyttää siltä, että skaalautumattomia verkkoja syntyy erityisesti sellaisista prosesseista, 
+jotka noudattavat kasvaessaan suosivaa kiinnittymistä (eng. preferential attachment) \cite{Babarasi}. Suosivalla kiinnittymisellä tarkoitetaan satunnaisverkkojen yhteydessä sitä, että uusia 
+solmuja liitetään todennäköisimmin sellaisiin solmuihin, joilla on jo ennestään korkea asteluku. Koska suosiva kiinnittyminen näyttäisi olevan tosielämässä esiintyvien skaalautumattomien
+verkkojen kasvun taustalla, on siihen perustuvien kasvuprosessien kehittäminen kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana. 
+
+Yksi suosivaa kiinnittymistä ilmentävä kasvumalli on \textit{No Restart Random Walk} (NRRW), jossa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Nimensä 
+mukaisesti NRRW-prosessin satunnaiskävely ei ala koskaan alusta, vaan jatkuu katkeamatta verkon kasvaessa. Prosessin ominaisuudet määrää askelparametri, $ s $, ja se kehittyy seuraavanlaisesti:
 \begin{enumerate}[noitemsep]
    \setcounter{enumi}{-1}
    \item Aluksi verkossa on yksi solmu, juuri, josta on kaari itseensä. Satunnaiskävelyn alkutila on juurisolmu.
-   \item Satunnaiskävely ottaa s askelta verkossa.
+   \item Satunnaiskävely ottaa $ s $ askelta verkossa.
    \item Verkkoon lisätään uusi solmu ja se liitetään satunnaiskävelyn senhetkiseen sijaintiin.
    \item Palataan kohtaan 1.
 \end{enumerate}
-
-Prosessin simulointi ja matemaattinen analyysi osoittaa, että parametrin s parillisuus vaikuttaa voimakkaasti satunnaiskävelyn ja satunnaisverkon luonteisiin:
-
+Prosessin simulointi ja matemaattinen analyysi osoittaa, että parametrin $ s $ parillisuus vaikuttaa voimakkaasti satunnaiskävelyn ja satunnaisverkon luonteisiin:
 \begin{table}[htb]
    \begin{center}
    \begin{tabular}{|c|c|p{7.5cm}|}
    \hline
    \textbf{Askelparametri} & \textbf{Satunnaiskävely} & \textbf{Satunnaisverkko} \\ \hline
-   s = 1          & Väistyvä        & Solmujen asteluku on geometrisen jakauman stokastisesti dominoima. \\ \hline
-   s = 2n         & Palautuva       & Sisäsolmujen asteluku ei ole eksponentiaalisesti rajoitettu. \\ \hline
+   s = 1          & Väistyvä        & Sisäsolmujen astelukujen jakauma on geometrisen jakauman ylhäältä rajoittama. \\ \hline
+   s = 2n         & Palautuva       & Sisäsolmujen astelukujen jakauma on potenssilain alhaalta rajoittama. \\ \hline
    \end{tabular}
    \end{center}
 \end{table}
 
-NRRW-prosessi voidaan nähdä joko satunnaisena verkkona tai satunnaiskävelynä. Näkemyksestä riippumatta satunnaiskävelyn palautuvuus ja sen kasvattaman verkon luonne ovat kietoutuneet toisiinsa. Näiden toisistaan riippuvien prosessien käsittelyä voidaan helpottaa osoittamalla, että koko prosessi on yhdenmukainen yksinkertaisemman stokastisen prosessin kanssa. Tässä kandidaatin työssä näytän, että NRRW-prosessi on stokastisesti yhdenmukainen riippumattomien, tasajakautuneiden satunnaislukujen määräämän prosessin kanssa. Lopuksi käytän tätä vaihtoehtoista esitystapaa puun solmujen palautuvuutta koskevan lauseen todistukseen.
+NRRW-prosessin luonnetta voidaan tarkastella joko satunnaisen verkon tai satunnaiskävelyn näkökulmasta. Satunnaiskävelyn palautuvuus ja sen kasvattaman verkon topologia ovat 
+kuitenkin kietoutuneet selvästi toisiinsa. \cite{Iacobelli}
+
+Koska NRRW-prosessin kasvattamat verkot ilmentävät sekä skaalautumatonta että skaalautuvaa sisäsolmujen rakennetta, ovat ne epäilemättä kiinnostavia perinteisen verkkoanalyysin näkökulmasta. 
+Osuvimmat sovelluskohteet löytynevät kuitenkin sellaisista systeemeistä, joissa satunnaiskulun ja verkon kasvun yhteys on prosessin sisäänrakennettu, kiistaton ominaisuus. Yksi tällainen
+systeemi esiintyy uudenlaisen kryptovaluutan, IOTA:n, toteutuksessa. Toisin kuin perinteiset kryptovaluutat, IOTA ei perustu lohkoketjuteknologiaan. Lohkoketjun sijaan transaktiot 
+tallennetaan suuntaamattomaan, syklittömään verkkoon. Kun uusi transaktio saapuu, on sen vahvistettava kaksi aiempaa transaktiota liittymällä niihin transaktiopuussa. Koska 
+transaktioiden vahvistusmekanismi ei perustu louhimiseen (eng. mining), ei transaktioihin liity myöskään transaktiokustannuksia. Tämä on huomattava etu verrattuna perinteisiin
+kryptovaluuttoihin, sillä se mahdollistaa muun muuassa mikromaksujen maksamisen. \cite{Popov-WP}
+
+IOTA:n transaktiopuun stabiilius ja turvallisuus ovat kuitenkin monimutkaisia kysymyksiä. Puuta mallinnetaan suuntaamattomia ja syklittömiä verkkoja rakentavalla stokastisella prosessilla, 
+Tanglella, jossa uusien solmujen liitoskohdat valitaan satunnaiskulun avulla \cite{Popov-tangle}. NRRW-prosessi on pohjimmiltaan satunnaiskulku satunnaisessa verkossa, ja siten 
+sen ymmärtäminen on osa matemaattista kivijalkaa, jonka päälle Tanglen kaltaiset tietotekniset sovellukset rakennetaan.
+
+Tässä kandidaatintyössä perehdyn sellaisiin NRRW-prosessin ominaisuuksiin, joita on käsitelty Giulio Iacobellin, Daniel Figueiredon ja Giovanni Neglian paperissa "Transient and Slim 
+versus Recurrent and Fat: Random Walks and the Trees they Grow". Keskityn erityisesti parillisen askelparametrin prosessiin, sillä sen generoimien verkkojen sisäsolmut muodostavat 
+monien kasvumallien sovelluksien kannalta kiinnostavan skaalautumattoman verkon. Formuloin NRRW-prosessille stokastisen esityksen, todistan sen oikeaksi ja hyödynnän sitä parillisen askelparametrin ominaisuuksien tarkasteluun.
 
 %% Opinnäytteessä jokainen osa alkaa uudelta sivulta, joten \clearpage
 %%
@@ -418,11 +442,7 @@ NRRW-prosessi on kahden toisistaan riippuvan stokastisen prosessin pari, \( ( \G
 
 Askelparametri vaikuttaa huomattavasti siihen, millaisia verkkoja NRRW-prosessi kasvattaa. Tämä ilmenee hyvin tietokonesimuloiduista realisaatioista kuvassa \ref{simulaatiot}. Parametrilla \( s = 1 \) jokaiseen satunnäiskävelyn vierailemaan tilaan lisätään uusi solmu. Tämä johtaa korkeisiin puihin, joissa solmut jakutuvat tasaisesti parillisille ja parittomille tasoille. Satunnaiskävelyn kaikki tilat ovat väistyviä.
 
-Sen sijaan parillinen askelparametri (\( s \in 2\N_{0} \)) johtaa hyvin toisenlaisiin verkkoihin. Simulaatiotulokset viittaavat solmujen kasaantuvan suurissa määrin joidenkin yksittäisten solmujen jälkeläisiksi. Kyseessä on niin sanottu suosivan kiinnittymisen ilmiö, jossa jotain mitattavaa suuretta kertyy sellaisille joukon alkioille, joilla on jo ennestään paljon kyseistä suuretta. Satunnaisverkossa tämä ilmenee siten, että uusia solmuja liitetään todennäköisimmin sellaisiin verkon solmuihin, joilla on jo ennestään korkea asteluku.
-
-Parillisen askelparametrin NRRW-prosesseihin liittyy myös toinen erikoisuus. Koska uusi solmuja lisätään vain parillisen askelmäärän välein, niitä kertyy vain verkon parillisille tasoille, ellei satunnaiskävely kulje juurisolmun silmukkakaaren läpi. Silloin satunnaiskävelyn pariteetti vaihtuu ja uusia solmuja lisätään vain parittomille tasoille.
-
-Parillisen askelparametrin NRRW-prosessin ominaisuudet vastaavat paremmin todellisia verkostoja, kuten Internettiä ja sosiaalisia piirejä [2]. Rajoitun siis tarkastelemaan vain parillisen askelparametrin NRRW-prosesseja.
+Sen sijaan parillinen askelparametri (\( s \in 2\N_{0} \)) johtaa hyvin toisenlaisiin verkkoihin. Simulaatiotulokset viittaavat solmujen kasaantuvan suurissa määrin joidenkin yksittäisten solmujen jälkeläisiksi. Kyseessä on niin sanottu suosivan kiinnittymisen ilmiö, jossa jotain mitattavaa suuretta kertyy sellaisille joukon alkioille, joilla on jo ennestään paljon kyseistä suuretta. Satunnaisverkossa tämä ilmenee siten, että uusia solmuja liitetään todennäköisimmin sellaisiin verkon solmuihin, joilla on jo ennestään korkea asteluku. Kyseinen ilmiö näyttää olevan monien todellisten verkkojen, kuten Internetin, skaalautumattoman rakenteen takana \cite{Babarasi}.
 
 \begin{figure}[htb]
 \centering
@@ -432,9 +452,11 @@ Parillisen askelparametrin NRRW-prosessin ominaisuudet vastaavat paremmin todell
 
 \subsection{Satunnaisverkko ja -kävely}
 
+NRRW-prosessin ominaisuudet ovat seurausta satunnaiskulun ja sen kasvattaman satunnaisen verkon välisestä vuorovaikutuksesta. Malli on monimutkainen ja yksinkertaisuuden vuoksi on ensin syytä tarkastella satunnaisverkkoa ja satunnaiskulkua erillisinä prosesseina. Tämä mahdollistaa erillisiin malleihin liittyvän terminologian ja yksityiskohtien esittelyn ennen NRRW-prosessin kokonaisuuteen paneutumista.
+
 \subsubsection{Satunnaisverkko}
 
-\( (\Grandom_{t}^{s})_{t \in \N_{0}} \), on satunnaisverkko, johon lisätään uusi solmu \textit{s} aikayksikön välein. Satunnaisprosessin tilajoukko on kaikkien suuntaamattomien, yhtenäisten ja syklittömien verkkojen eli puiden joukko.
+Olkoon \( (\Grandom_{t}^{s})_{t \in \N_{0}} \) satunnaisverkko, johon lisätään uusi solmu \textit{s} aikayksikön välein. Satunnaisprosessin tilajoukko on kaikkien suuntaamattomien, yhtenäisten ja syklittömien verkkojen eli puiden joukko.
 \begin{definition}
    \label{definition:verkko}
 Suuntaamaton verkko $ G $ on pari $ (V, E) $, missä joukko $ V $ on verkon solmujen joukko (\( v_{i} \in V \)) ja $ E $ on suuntaamattomien kaarien joukko. Kaarien joukon alkiot ovat muotoa \( \{ v_{i}, v_{j} \} \). Kaari \( \{ v_{i}, v_{j} \} \) yhdistää solmut \( v_{i} \) ja \( v_{j} \) toisiinsa. 
@@ -449,7 +471,7 @@ Kasvavan verkon käsittelyn helpottamiseksi satunnaisverkon \( (\Grandom_{t}^{s}
 
 \subsubsection{Satunnaiskävely}
 
-Vastaavasti satunnaiskävelyprosessin \( (\Wrandom_{t})_{t \in \N_{0}} \) tilajoukon ja siirtymätodennäköisyydet määrää sen kasvattama satunnaisverkko. Sekä tilajoukko että siirtymätodennäköisyydet muuttuvat aina, kun verkkoon lisätään uusi solmu. Lisäyshetkien välillä tilajoukko on kuitenkin vakio ja satunnaiskävelyprosessi voidaankin silloin nähdä tavallisena äärellisen tilajoukon Markov-ketjuna. Jos satunnaiskävely on solmussa \( i \) hetkellä \( t \), valitaan seuraava tila satunnaisesti valitsemalla yksi solmusta \( i \) lähtevä kaari ja siirtymällä sen osoittamaan solmuun. Todennäköisyysmassa on tasajakautunut kaikkien solmun \( i \) kaarien kesken. 
+Vastaavasti satunnaiskävelyprosessin \( (\Wrandom_{t})_{t \in \N_{0}} \) tilajoukon ja siirtymätodennäköisyydet määrää sen kasvattama satunnaisverkko. Sekä tilajoukko että siirtymätodennäköisyydet muuttuvat aina, kun verkkoon lisätään uusi solmu. Lisäyshetkien välillä tilajoukko on kuitenkin vakio ja satunnaiskävelyprosessi voidaankin silloin nähdä tavallisena äärellisen tilajoukon Markov-ketjuna. Jos satunnaiskävely on solmussa \( v_{i} \) hetkellä \( t \), määräytyy seuraava tila satunnaisesti valitsemalla yksi solmusta \( v_{i} \) lähtevä kaari ja siirtymällä sen osoittamaan solmuun. Todennäköisyysmassa on tasajakautunut kaikkien solmun \( v_{i} \) kaarien kesken. 
 
 Koska NRRW-prosessi rakentaa puita, ei verkossa ole muita syklejä kuin juuren kaari itseensä. Verkkoteoriassa kaaret solmusta itseensä lasketaan kahdesti. Merkitään solmun \( v_{i} \) solmuun \( v_{j} \) yhdistävien kaarien määrää verkossa $ G_{i} $
 \[
@@ -467,7 +489,7 @@ missä \( E_{i} \) on verkon \( G_{i} \) kaarien joukko. Nyt todennäköisyys si
 \end{equation}
 sillä oletuksella, että satunnaiskävely tapahtuu verkossa $ G_{i} $. Kaavassa \( d_{G_{i}}(v_{i}) \) on solmun \( v_{i} \) asteluku verkossa $ G_{i} $. Toisin sanoen
 \begin{equation}
-   d_{G_{i}}(v_{i}) = \sum_{w \in V} \psi_{G_{i}}(v_{i}, w)
+   d_{G_{i}}(v_{i}) = \sum_{w \in V_{i}} \psi_{G_{i}}(v_{i}, w)
    \label{equation:asteluku}
 \end{equation}
 eli kaikkien solmuun \( v_{i} \) yhdistyvien kaarien lukumäärä.
@@ -478,61 +500,66 @@ Satunnaisverkon ja satunnaiskävelyn erillinen tarkastelu paljastaa, että näis
 
 \subsubsection{Tilajoukko}
 
-Olkoon $ V $ kaikkien solmujen numeroituvasti ääretön joukko. Jos $ n $:n solmun joukkoa merkitään $ V_{n} = \{ v_{1}, v_{2}, \ldots , v_{n} \} \subset V $ niin $ n $:n solmun suuntaamattomien verkkojen joukko on
+Olkoon $ V = \left\{ v_{1}, v_{2}, \ldots \right\} $ kaikkien solmujen numeroituvasti ääretön joukko. Jos $ n $:n solmun joukkoa merkitään $ V_{n} = \{ v_{1}, v_{2}, \ldots , v_{n} \} \subset V $ niin $ n $:n solmun suuntaamattomien verkkojen joukko on
 \[
-   \mathbb{G}_{n} = \{ (V_{n}, E) \mid E \subset V_{n} \times V_{n} \}
+   \mathbb{G}_{n} = \{ (V_{n}, E) \mid E \subset V_{n}^{2}  \}
 \]
-NRRW-prosessiin kuuluu myös satunnaiskävely, jonka tilajoukko $ n $:n solmun verkkoa kulkiessa sen solmujen joukko $ V_{n} $. Selvästi $ n $:n solmun NRRW-prosessin tilajoukko on $ S_{n} = V_{n} \times \mathbb{G}_{n} $.
+missä $ V_{n}^{2} = \left\{ e \subset V_{n} \mid |e| = 2 \right\} $ on solmujoukon $ V_{n} $ järjestämättömien parien joukko. NRRW-prosessiin kuuluu myös satunnaiskävely, jonka tilajoukko $ n $:n solmun verkkoa kulkiessa sen solmujen joukko $ V_{n} $. Selvästi $ n $:n solmun NRRW-prosessin tilajoukko on $ S_{n} = V_{n} \times \mathbb{G}_{n} $.
+
 Kaikkien solmujen joukkoa merkitään numeroituvasti äärettömällä joukolla $ V $. Vastaavasti kaikkien verkkojen joukkoa voidaan merkitä äärettömällä unionilla
 \begin{equation}
    \mathbb{G} = \bigcup_{n = 1}^{\infty} \mathbb{G}_{n}
 \end{equation}
 Koska satunnaisverkko kasvaa NRRW-prosessin edetessä, täytyy sen tilajoukon sisältää kaikki eri solmulukumäärien mahdollistamat tilat. NRRW-prosessin tilajoukko onkin siis
 \begin{equation}
-   S = \bigcup_{n = 1}^{\infty} S_{n}
+   S = V \times \mathbb{G}
+   \label{equation:tilajoukko}
 \end{equation}
 
 \subsubsection{Siirtymätodennäköisyydet}
 
 NRRW-prosessin siirtymätodennäköisyydet ovat ajassa epähomogeenisia, sillä satunnaiskävelyn realisaatio kasvattaa sen omaa tilajoukkoa, eli NRRW-prosessin verkkoa vain kun $ t \bmod s = 0 $. Siirtymätodennäköisyyksiä on siten syytä tarkastella kahdessa eri tapauksessa ajanhetken jaollisuuden mukaan. 
 
-Merkitään NRRW-prosessia hetkellä $ t $ yksinkertaisesti $ (\Wrandom_{t}, \Grandom^{s}_{t}) $. Jos $ v_{i}, v_{j} \in V $ ja $ G_{i}, G_{j} \in \mathbb{G} $, niin NRRW-prosessin siirtymätodennäköisyydet saavat esityksen
-\begin{align*}
-   P_{i,j} &= \prob \left[ (\Wrandom_{t+1}, \Grandom^{s}_{t+1}) = (v_{i}, G_{i}) \mid (\Wrandom_{t}, \Grandom^{s}_{t}) = (v_{j}, G_{j}) \right] \\
-   \quad &= \prob \left[ \Wrandom_{t+1} = v_{i}, \Grandom^{s}_{t+1} = G_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = G_{j} \right]
+Merkitään NRRW-prosessia hetkellä $ t $ yksinkertaisesti $ (\Wrandom_{t}, \Grandom^{s}_{t}) $. Jos $ v, v' \in V $ ja $ G, G' \in \mathbb{G} $, niin NRRW-prosessin siirtymätodennäköisyydet saavat esityksen
+\begin{align}
+   P\left( (v', G'), (v, G) \right) &= \prob \left[ (\Wrandom_{t+1}, \Grandom^{s}_{t+1}) = (v, G) \mid (\Wrandom_{t}, \Grandom^{s}_{t}) = (v', G') \right] \\
+                                    &= \prob \left[ \Wrandom_{t+1} = v, \Grandom^{s}_{t+1} = G \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right]
    \label{equation:siirtyma-tn}
-\end{align*}
-
-\paragraph{Kun $ t + 1 \bmod s \neq 0, $} ei prosessin verkkoon lisätä uusia solmuja. Satunnaisverkko $ \Grandom^{s}_{t+1} $ on siis varmasti sama kuin sen edeltäjä $ \Grandom^{s}_{t} $. Siten
-\[
-   \prob \left[ \Grandom^{s}_{t+1} = G_{j} \mid \Grandom^{s}_{t} = G_{j} \right] = 1
-\]
-riippumattomasti satunnaiskävelyn tilasta. Selvästi tapahtuman komplementti ($ \Grandom^{s}_{t+1} \neq G_{j} $) on mahdoton. Lausekkeen \ref{equation:siirtyma-tn} mukaisesti
+\end{align}
+\textbf{Kun $ t + 1 \bmod s \neq 0, $} ei prosessin verkkoon lisätä uusia solmuja. Satunnaisverkko $ \Grandom^{s}_{t+1} $ on siis varmasti sama kuin sen edeltäjä $ \Grandom^{s}_{t} $. Siten
+$ \prob \left[ \Grandom^{s}_{t+1} = G \mid \Grandom^{s}_{t} = G \right] = 1 $
+riippumattomasti satunnaiskävelyn tilasta. Selvästi tapahtuman komplementti ($ \Grandom^{s}_{t+1} \neq G $) on mahdoton. Lausekkeen \ref{equation:siirtyma-tn} mukaisesti
 \begin{align*}
-   P_{i,j} &= \prob \left[ \Wrandom_{t+1} = v_{i}, \Grandom^{s}_{t+1} = G_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = G_{j} \right] \\
-   \quad &= \prob \left[ \Grandom^{s}_{t+1} = G_{i} \mid \Grandom^{s}_{t} = G_{j}, \Wrandom_{t} = v_{j} \right] \prob \left[ \Wrandom_{t+1} = v_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t+1} = G_{i}, \Grandom^{s}_{t} = G_{j} \right] \\
-   \quad &= \prob \left[ \Grandom^{s}_{t+1} = G_{i} \mid \Grandom^{s}_{t} = G_{j}, \Wrandom^{s}_{t} = v_{i}  \right] \prob \left[ \Wrandom_{t+1} = v_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t+1} = G_{i}, \Grandom^{s}_{t} = G_{j} \right] \\
-   \quad &= \indicator \left\{ G_{i} = G_{j} \right\} \prob \left[ \Wrandom_{t+1} = v_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t+1} = G_{i}, \Grandom^{s}_{t} = G_{j} \right] \\
-   \quad &= \indicator \left\{ G_{i} = G_{j} \right\} \frac{\psi^{(t)}(v_{i}, v_{j})}{d_{t}(v_{i})}
+   P\left( (v', G'), (v, G) \right) &= \prob \left[ \Wrandom_{t+1} = v, \Grandom^{s}_{t+1} = G \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right] \\
+   &= \prob \left[ \Grandom^{s}_{t+1} = G \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right] \\
+   &\mathrel{\phantom{=}} \times \prob \left[ \Wrandom_{t+1} = v \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G', \Grandom^{s}_{t+1} = G \right] \\
+   &= \prob \left[ \Grandom^{s}_{t+1} = G \mid \Grandom^{s}_{t} = G' \right] \prob \left[ \Wrandom_{t+1} = v \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right] \\
+   &= \indicator \left\{ G = G' \right\} \prob \left[ \Wrandom_{t+1} = v \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right] \\
+   &= \indicator \left\{ G_{i} = G_{j} \right\} \frac{\psi^{(t)}(v_{i}, v_{j})}{d_{t}(v_{i})}
 \end{align*}
 missä viimeinen yhtäsuuruus pohjautuu kaavan \ref{equation:verkko-tn} lausekkeeseen.
-
-\paragraph{Kun $ t + 1 \bmod s = 0, $} satunnaisverkko $ \Grandom^{s}_{t+1} $ määräytyy satunnaiskävelyn $ \Wrandom_{t+1} $ realisaatiosta.
+\newline
+\textbf{Kun $ t + 1 \bmod s = 0, $} satunnaisverkko $ \Grandom^{s}_{t+1} $ määräytyy satunnaiskävelyn $ \Wrandom_{t+1} $ realisaatiosta.
 \begin{align*}
-   P_{i,j} &= \prob \left[ \Wrandom_{t+1} = v_{i}, \Grandom^{s}_{t+1} = G_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = G_{j} \right] \\
-   \quad &= \prob \left[ \Wrandom_{t+1} = v_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = G_{j} \right] \prob \left[ \Grandom^{s}_{t+1} = G_{i} \mid \Wrandom_{t+1} = v_{i}, \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = G_{j} \right]
+   P\left( (v', G'), (v, G) \right) &= \prob \left[ \Wrandom_{t+1} = v, \Grandom^{s}_{t+1} = G \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right] \\
+   &= \prob \left[ \Wrandom_{t+1} = v \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right] \\
+   &\mathrel{\phantom{=}} \times \prob \left[ \Grandom^{s}_{t+1} = G \mid \Wrandom_{t+1} = v, \Wrandom_{t} = v', \Grandom^{s}_{t} = G' \right]
 \end{align*}
-Uusi solmu lisätään nyt siihen verkon $ G_{j} $ solmuun, johon satunnaiskävely siirtyy ajanhetkellä $ t + 1 $. Selvästi mahdollisia satunnaisverkon $ \Grandom^{s}_{t+1} $ realisaatioita ovat vain sellaiset verkot, jotka on saatu liittämällä verkkoon $ G_{j} $ yksi uusi solmu, $ v_{\lfloor \frac{t+1}{s}} \rfloor $. Kun verkkoja $ G_{i} $ ja $ G_{j} $ merkitään verkon määritelmän (\ref{definition:verkko}) mukaisina solmujen ja kaarien pareina $ (V_{i}, E_{i}) $ ja $ (V_{j}, E_{j}) $,
+Uusi solmu lisätään nyt siihen verkon $ G' $ solmuun, johon satunnaiskävely siirtyy ajanhetkellä $ t + 1 $. Selvästi mahdollisia satunnaisverkon $ \Grandom^{s}_{t+1} $ realisaatioita ovat vain sellaiset verkot, jotka on saatu liittämällä verkkoon $ G' $ yksi uusi solmu, $ v^{+} = v_{\lfloor \frac{t+1}{s}} \rfloor $. Kun verkkoja $ G $ ja $ G' $ merkitään verkon määritelmän (\ref{definition:verkko}) mukaisina solmujen ja kaarien pareina $ (V, E) $ ja $ (V', E') $,
 \begin{align*}
-   P_{i,j} &= \prob \left[ \Grandom^{s}_{t+1} = (V_{i}, E_{i}) \mid \Wrandom_{t+1} = v_{i}, \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = (V_{j}, E_{j}) \right] \\
-           & \cdot \; \prob \left[ \Wrandom_{t+1} = v_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = (V_{j}, E_{j}) \right] \\
-           &= \indicator \left\{ (V_{i}, E_{i}) = (V_{j} \cup \{ v_{i} \}, E_{j} \cup \left\{ \left\{ v_{i}, v_{j} \right\} \right\}) \right\} \prob \left[ \Wrandom_{t+1} = v_{i} \mid \Wrandom_{t} = v_{j}, \Grandom^{s}_{t} = (V_{j}, E_{j}) \right] \\
-           &= \indicator \left\{ G_{i} = (V_{j} \cup \{ v_{i} \}, E_{j} \cup \left\{ \left\{ v_{i}, v_{j} \right\} \right\}) \right\} \frac{\psi^{(t)}(v_{i}, v_{j})}{d_{t}(v_{i})}
+   P\left( (v', G'), (v, G) \right) &= \prob \left[ \Wrandom_{t+1} = v \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = (V', E') \right] \\
+           &\mathrel{\phantom{=}} \times \prob \left[ \Grandom^{s}_{t+1} = (V, E) \mid \Wrandom_{t+1} = v, \Wrandom_{t} = v', \Grandom^{s}_{t} = (V', E') \right] \\
+           &= \indicator \left\{ (V, E) = (V' \cup \{ v^{+} \}, E' \cup \left\{ \left\{ v, v^{+} \right\} \right\}) \right\} \\
+           &\mathrel{\phantom{=}} \times \prob \left[ \Wrandom_{t+1} = v' \mid \Wrandom_{t} = v', \Grandom^{s}_{t} = (V', E') \right] \\
+           &= \indicator \left\{ G = (V' \cup \{ v^{+} \}, E' \cup \left\{ \left\{ v, v^{+} \right\} \right\}) \right\} \frac{\psi_{G'}(v, v')}{d_{G'}(v')}
 \end{align*}
+missä viimeinen yhtäsuuruus perustuu kaavan \ref{equation:verkko-tn} lausekkeeseen.
 
 \section{Stokastinen esitys}
 
-\subsection{Teoria}
+TODO: Yleistä...
+
+\subsection{Yleistä teoriaa}
 
 Olkoon \( (\omega_{t})_{t \geq 0} \) jono riippumattomia välin \( [0, 1] \) tasajakautuneita satunnaislukuja. Toisin sanoen \( w_{t} \sim \text{Tas}(0, 1) \). Tällaista satunnaislukujen sarjaa voidaan käyttää monimutkaisemman stokastisen prosessin algoritmiseen simulointiin [3]. Simulointi rakennetaan etsimällä deterministinen funktio \( \phi : S \times [0, 1] \to S \), joka liittää stokastisen prosessin tilan ja välin \( [0, 1] \) reaaliluvun prosessin seuraavaan tilaan. Funktion \( \phi \) tulee toteuttaa yhtälö
 \begin{align}
@@ -540,9 +567,7 @@ Olkoon \( (\omega_{t})_{t \geq 0} \) jono riippumattomia välin \( [0, 1] \) tas
                                                 &= \prob \left[ X_{t+1} = y \mid X_{t} = x \right] = P_{x,y} \quad \forall \; x, y \in S
    \label{equation:stokastinen-esitys}
 \end{align}
-Yhtälön \ref{equation:stokastinen-esitys} toteuttavaa funktiota \( \phi \) ja satunnaislukujonoa \( (\omega_{t})_{t \geq 0} \) kutsutaan siirtymämatriisin P \textit{stokastiseksi esitykseksi}.
-
-Jos stokastisen prosessin alkutila on \( X_{0} = x_{0} \), sitä voidaan simuloida sen stokastisen esityksen avulla rekursiivisesti:
+Yhtälön \ref{equation:stokastinen-esitys} toteuttavaa funktiota \( \phi \) ja satunnaislukujonoa \( (\omega_{t})_{t \geq 0} \) kutsutaan siirtymämatriisin P \textit{stokastiseksi esitykseksi}. Jos stokastisen prosessin alkutila on \( X_{0} = x_{0} \), sitä voidaan simuloida sen stokastisen esityksen avulla rekursiivisesti:
 \begin{equation}
    X_{t+1} = \phi(X_{t}, \omega_{t})
 \end{equation}
@@ -558,11 +583,12 @@ Prosessin simulointi tehdään, kuten homogeenisessa tilanteessa, mutta rekursio
    X_{t+1} = \phi^{(t)}(X_{t}, \omega_{t})
 \end{equation}
 
-\subsection{Propositio}
+\subsection{Prosessin esitys}
 
 Edellä havaittiin, että NRRW-prosessi on epähomogeeninen ajassa. Sen stokastinen esitys on siis muotoa \( (\phi_{t}, \omega_{t})_{t \geq 0} \), missä funktiot \( \phi_{t} \) toteuttavat ehdon \ref{equation:epahom-stokastinen-esitys}. Muodostetaan sopiva jono deterministisiä funktioita NRRW-prosessille. Prosessin tilat ovat muotoa \( (v, G) \), missä \( G = (V, E) \) on verkko ja \( v \in V \) on verkon G solmu. Jakamalla rekursiofunktiot satunnaiskävely- ja satunnaisverkko-osiin saadaan niille korkeatasoinen muoto
 \begin{equation}
    \phi^{(t)} \left( (v, G), w \right) = \left( \lambda\left( (v, G), w \right), \mu^{(t)} \left( \lambda\left( (v, G), w \right), G \right) \right)
+   \label{equation:esitys-1}
 \end{equation}
 missä \( \lambda \) on satunnaiskävelyn \( (\Wrandom_{t})_{t \geq 0} \) stokastisen esityksen rekursiofunktio parametriksi annetussa verkossa G ja \( \mu \) päivittää verkkoa G satunnaiskävelyn realisaation mukaisesti. Satunnaiskävelyn rekursiofunktio
 \begin{equation}
@@ -576,31 +602,32 @@ missä \( \lambda \) on satunnaiskävelyn \( (\Wrandom_{t})_{t \geq 0} \) stokas
 \end{equation}
 missä \( \rho \) on funktio verkosta sen siirtymämatriisiin ja $ |V| $ on verkon $ G $ solmujen lukumäärä. Hyödyntäen määritelmän \ref{equation:psi} funktiota solmuja yhdistävien kaarien määrälle, saadaan kuvaukselle \( \rho \) alkioittainen määritelmä
 \begin{equation}
-   \rho(G)_{i,j} = \rho\left( (V, E) \right)_{i,j} = \frac{\psi^{(t)}(i, j)}{d_{G}(i)} = \frac{\psi^{(t)}(i, j)}{\sum_{w \in V} \psi^{(t)}(v_{i}, w)}
+   \rho(G)_{i,j} = \frac{\psi_{G}(i, j)}{d_{G}(i)}.
 \end{equation}
-missä kaksi viimeistä yhtäsuuruutta seuraa kaavoista \ref{equation:verkko-tn} ja \ref{equation:asteluku}.
-
-Stokastisen esityksen verkkoa päivittävä funktio määritellään
+Tämä seuraa suoraan kaavasta \ref{equation:verkko-tn}. Lopuksi Stokastisen esityksen verkkoa päivittävä funktio
 \begin{equation}
    \mu^{(t)} \left( v, (V, E) \right) =
    \begin{cases}
-      \left( V \cup \{v_{t}\}, E \cup \left\{ \{ v, v_{t} \} \right\} \right) & \text{kun } t \bmod s = 0 \\
+      \left( V \cup \{v_{t/s}\}, E \cup \left\{ \{ v, v_{t/s} \} \right\} \right) & \text{kun } t \bmod s = 0 \\
       \left( V, E \right) & \text{muulloin}
    \end{cases}
+   \label{equation:esitys-4}
 \end{equation}
-Se siis lisää verkon solmuun \( v \) uuden solmun \( v_{t} \) aina kun aika on jaollinen askelparametrillä s. Muulloin verkkoa ei muuteta.
+Se siis lisää verkon solmuun \( v \) uuden solmun \( v_{t/s} \) aina kun aika $ t $ on jaollinen askelparametrillä s. Muulloin verkkoa ei muuteta.
 
-\subsection{Todistus}
+\begin{theorem}
+Olkoon $ (\omega_{t})_{t \geq 0} $ jono riippumattomia välin $ [0, 1] $ tasajakautuneita satunnaislukuja. Kaavojen \ref{equation:esitys-1}-\ref{equation:esitys-4} määrittelemä jono deterministisiä funktioita $ (\phi^{t})_{t \geq 0} $ muodostaa yhdessä satunnaislukujonon $ (\omega_{t})_{t \geq 0} $ kanssa NRRW-prosessin stokastisen esityksen.
+\end{theorem}
 
 \begin{proof}
 
 Esitän, että stokastisen esityksen \( (\phi^{(t)}, \omega_{t})_{t \geq 0} \) simuloima stokastinen prosessi on todellakin NRRW-prosessi askelparametrillä s. NRRW-prosessin siirtymätodennäköisyydet on laskettu kappaleessa 2.3.1. Prosessin käyttäytyminen ajanhetkellä $ t $ riippuu siitä, onko $ t $ jaollinen askelparametrilla $ s $. Osoitetaan stokastisen esitykseen yhdenmukaisuus NRRW-prosessin kanssa molemmissa tapauksissa. Olkoon $ X_{t} = (\Wrandom_{t}, \Grandom^{s}_{t}) $ NRRW-prosessin tila hetkellä $ t $. 
 
-On näytettävä kaavan 9 mukaisesti, että
+On näytettävä kaavan \ref{equation:epahom-stokastinen-esitys} mukaisesti, että
 \begin{equation}
    \prob \left[ \phi^{(t)}(x, \omega_{t}) = y \right] = \prob \left[ X_{t+1} = y \mid X_{t} = x \right] 
 \end{equation}
-kaikilla $ x, y \in S $ ja $ t \geq 0 $, kuten kaavassa \ref{equation:epahom-stokastinen-esitys}. Sijoittamalla aiemmin määritelty stokastinen esitys yhtälön vasempaan puoleen saadaan
+kaikilla $ x, y \in S $ ja $ t \in \N $, missä $ S $ on kaavan \ref{equation:tilajoukko} määrittelemä NRRW-prosessin tilajoukko. Sijoittamalla aiemmin määritelty stokastinen esitys yhtälön vasempaan puoleen saadaan
 \begin{align*}
    \prob \left[ \phi^{(t)}(x, \omega_{t}) = y \right] &= \int\limits_0^1 \; \indicator \left\{ \phi^{(t)}(x, w) = y \right\} \mathrm{d}w \\
                                                 &= \int\limits_0^1 \; \indicator \left\{ \left( \lambda\left( (v_{x}, G_{x}), w \right), \mu^{(t)} \left( \lambda\left( (v_{x}, G_{x}), w \right), G_{x} \right) \right) = (v_{y}, G_{y}) \right\} \mathrm{d}w \\
@@ -630,19 +657,19 @@ Selvästi rakentamani stokastinen esitys on ekvivalentti NRRW-prosessin kanssa.
 
 \section{Parillinen prosessi}
 
-%\begin{figure}[htb]
-%\centering
-%\includegraphics[width=.8\textwidth]{pictures/simulation_4_50000.png}
-   %\caption{Tietokonesimuloitu NRRW-prosessi parillisella askelparametrilla $ s = 4 $. \label{figure:oma_simulaatio}}
-%\end{figure}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.8\textwidth]{pictures/simulation_4_50000.png}
+   \caption{Tietokonesimuloitu NRRW-prosessi parillisella askelparametrilla $ s = 4 $. \label{figure:oma_simulaatio}}
+\end{figure}
 
-NRRW-prosessin käyttäytymiseen vaikuttaa voimakkaasti askelparametrin $ s $ parillisuus. Parillisen parametrin prosessissa satunnaiskävely $ (\Wrandom_{t})_{t \in \N} $ on palautuva eli se vierailee kaikissa sen tilajoukon solmuissa äärettömän monta kertaa lähes varmasti. Lisäksi satunnaisverkon $ (\Grandom^{s}_{t})_{t \in \N} $ sellaisten solmujen, joiden asteluku on yli kaksi, astelukujen jakauma on potenssilain alhaalta rajoittama. 
+NRRW-prosessin käyttäytymiseen vaikuttaa voimakkaasti askelparametrin $ s $ parillisuus. Parillisen parametrin prosessissa satunnaiskävely $ (\Wrandom_{t})_{t \in \N} $ on palautuva eli se vierailee kaikissa sen tilajoukon solmuissa äärettömän monta kertaa lähes varmasti. Sen sijaan ainakin askelparametrin $ s = 1 $ satunnaiskulku on väistyvä. Askelparametrin parillisuus vaikuttaa yhtä radikaalisti satunnaisverkkojen ominaisuuksiin. Parillisen askelparametrin satunnaisverkon $ (\Grandom^{s}_{t})_{t \in \N} $ sisäsolmujen astelukujen jakauma on potenssilain alhaalta rajoittama, kun taas askelparametrin $ s = 1 $ solmujen astelukujen jakauma on geometrisen jakauman ylhäältä rajoittama.
 
 Erityisesti vain parillisen askelparametrin NRRW-prosessissa kaksi peräkkäistä uutta solmua voidaan lisätä samaan verkon solmuun. Parittoman askelparametrin prosessissa tämä ei ole mahdollista muualla kuin puun juuressa, sillä satunnaiskävely siirtyy $ s $:ssä askeleessa puun parittomalta tasolta parilliselle ja parilliselta tasolta parittomalle. Parillisen askelparametrin prosessissa satunnaiskävelyn pariteetti muuttuu vain, jos satunnaiskävely kulkee puun juuren silmukan läpi.
 
 Uuden, peräkkäisen solmun lisääminen samaan solmuun parillisessa NRRW-verkossa on paitsi mahdollista niin myös sitä todennäköisempää mitä suurempi kyseisen solmun asteluku on. Koska uusia solmuja lisätään ennen kaikkea saman pariteetin tasoille puussa, jäävät uudet solmut lehdiksi (\textit{eng. leaf}), kunnes prosessin pariteetti vaihtuu. Lehtisolmuista voi siirtyä vain takaisin lähtöpisteeseen, joten todennäköisyys palata johonkin satunnaisverkon solmuun suurenee, kun solmussa vieraillaan ja sen asteluku kasvaa. Kuvaaja \ref{figure:oma_simulaatio} havainnollistaa, kuinka lehtisolmuja kasaantuu tähtimaiseen muodostelmaan joidenkin solmujen ympärille.
 
-Tämä parillisen prosessin ominaisuus liittyy vahvasti suosivaan kiinnittymiseen (\textit{eng. preferential attachment}), sillä uusia solmuja kertyy erityisen todennäköisesti sellaisille verkon solmuille, joilla on jo ennestään paljon naapureita. Suosiva kiinnittyminen on tosielämän verkkorakenteiden kannalta kiinnostava ominaisuus. Käsite on yhteydessä sosialogiseen Matteus-efektiin, joka tarkoittaa etujen kasaantumista niille, joilla niitä on jo ennestään. Efektin ydinajatus tiivistetään usein lausahdukseen: \textit{"Rikkaat rikastuu ja köyhät köyhtyy"}. 
+Tämä parillisen prosessin ominaisuus liittyy vahvasti suosivaan kiinnittymiseen (\textit{eng. preferential attachment}), sillä uusia solmuja kertyy erityisen todennäköisesti sellaisille verkon solmuille, joilla on jo ennestään paljon naapureita. Suosiva kiinnittyminen on tosielämän verkkorakenteiden kannalta kiinnostava ominaisuus. Käsite on yhteydessä sosialogiseen Matteus-efektiin, joka tarkoittaa etujen kasaantumista niille, joilla niitä on jo ennestään. Efektin ydinajatus tiivistetään usein lausahdukseen: "Rikkaat rikastuu ja köyhät köyhtyy". 
 
 TODO: Preferential attachment in IOTA?
 
@@ -684,6 +711,14 @@ Olkoon $ i $ solmu ja $ \{i, j\} $ kaari NRRW-prosessin verkossa. Jos $ i $ on p
 TODO: INSERT PROOF HERE!
 \end{proof}
 
+\begin{theorem}
+
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
 \section{Yhteenveto}
 
 \clearpage
@@ -693,6 +728,26 @@ TODO: INSERT PROOF HERE!
 
 \begin{thebibliography}{99}
 
+\bibitem{Clauset} Clauset,\ A., Shalizi,\ C. R. ja Newman,\ M. E. 
+   \foreignlanguage{english}{Power-law distributions in empirical data.} 
+   Department of Computer Science, University of New Mexico, Albuquerque, USA, 2009.
+
+\bibitem{Babarasi-kirja} Barabási,\ A. Linkit - verkostojen uusi teoria. 
+   K. Helsinki: Terra Gognita Oy. 2002. ISBN 952-5202-66-6. 
+
+\bibitem{Babarasi} Barabási,\ A., Albert,\ R.
+   \foreignlanguage{english}{Emergence of Scaling in Random Networks.} 
+   Department of Physics, University of Notre-Dame, Notre-Dame, France, 1999.
+
+\bibitem{Iacobelli} Iacobelli,\ G., Figueiredo,\ D.\ R., Neglia,\ G. 
+   \foreignlanguage{english}{Transient and Slim versus Recurrent and Fat: Random Walks and the Trees they Grow.} 
+   Istituto de Matemática, Federal University of Rio de Janeiro, Brazil, 2017.
+
+\bibitem{Popov-WP} Popov,\ S. The Tangle. Viitattu 3.5.2018. Saatavissa: \url{https://iota.org/IOTA_Whitepaper.pdf}.
+
+\bibitem{Popov-tangle} Popov,\ S., Saa,\ O., Finardi,\ P. 
+   \foreignlanguage{english}{Equilibria in the Tangle.} 
+   Department of Statistics, Institute of Mathematics, Statistics and Scientific Computation, University of Campinas, Brazil, 2017.
 
 \end{thebibliography}
 
