@@ -39,7 +39,7 @@ process_simulations <- function (folder_path, step_parameter) {
 
    cdf.plot <- ggplot(cdf.data, aes(x, y, linetype=groups)) + 
       scale_y_log10(name = "Komplementaarinen kertymäfunktio") +
-      scale_x_continuous(name="Asteluku") + geom_line(size=1) +
+      scale_x_log10(name="Asteluku") + geom_line(size=1) +
       scale_color_manual(labels=c("Approksimaatio", "Alaraja")) +
       ggtitle("Komplementaarinen kertymäfunktio ja sen alaraja") +
       common.theme + theme(plot.title = element_text(hjust=0.5), 
@@ -49,7 +49,7 @@ process_simulations <- function (folder_path, step_parameter) {
    init_indices <- 1:(0.998*length(complete_data))
 
    hist.frequencies <- data.frame(init = sort(complete_data)[init_indices])
-   hist.plot <- ggplot(hist.frequencies, aes(x = init)) + geom_histogram(col="black", fill="grey") + 
+   hist.plot <- ggplot(hist.frequencies, aes(x = init)) + geom_histogram(col="black", fill="grey", bins=20) + 
       scale_x_log10(name = "Asteluku", breaks=c(2,10,100,1000,5000)) + 
       scale_y_continuous(name = "Määrä") + ggtitle("Astelukujen esiintyvyys") + 
       common.theme + theme(plot.title = element_text(hjust=0.5))
