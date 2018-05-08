@@ -389,7 +389,8 @@ solmuja liitetään todennäköisimmin sellaisiin solmuihin, joilla on jo ennest
 verkkojen kasvun taustalla, on siihen perustuvien kasvuprosessien kehittäminen kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana. 
 
 Yksi suosivaa kiinnittymistä ilmentävä kasvumalli on \textit{No Restart Random Walk} (NRRW), jossa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Nimensä 
-mukaisesti NRRW-prosessin satunnaiskulku ei ala koskaan alusta, vaan jatkuu katkeamatta verkon kasvaessa. Jokaisen $ s $ askeleen välein verkkoon lisätään uusi solmu, ja se liitetään siihen solmuun, johon satunnaiskulku on juuri siirtynyt. Prosessin simulointi ja matemaattinen analyysi osoittavat, että parametrin $ s $ parillisuus vaikuttaa voimakkaasti satunnaiskävelyn ja satunnaisverkon luonteisiin:
+mukaisesti NRRW-prosessin satunnaiskulku ei ala koskaan alusta, vaan jatkuu katkeamatta verkon kasvaessa. Jokaisen $ s $ askeleen välein verkkoon lisätään uusi solmu, ja se liitetään siihen solmuun, johon satunnaiskulku on juuri siirtynyt. Prosessin simulointi ja matemaattinen analyysi osoittavat, että parametrin $ s $ parillisuus vaikuttaa voimakkaasti satunnaiskävelyn ja satunnaisverkon luonteisiin (taulukko \ref{table:nrrw-character}). NRRW-prosessin luonnetta voidaan tarkastella joko satunnaisen verkon tai satunnaiskävelyn näkökulmasta. Satunnaiskävelyn palautuvuus ja sen kasvattaman verkon topologia ovat kuitenkin kietoutuneet selvästi toisiinsa. \cite{Iacobelli}
+
 \begin{table}[htb]
    \begin{center}
    \begin{tabular}{|c|c|p{7.5cm}|}
@@ -402,9 +403,6 @@ mukaisesti NRRW-prosessin satunnaiskulku ei ala koskaan alusta, vaan jatkuu katk
    \caption{NRRW-prosessin askelparametrin vaikutus taustalla vaikuttavan satunnaiskulun ja sen generoiman satunnaisverkon ominaisuuksiin.}
    \label{table:nrrw-character}
 \end{table}
-
-NRRW-prosessin luonnetta voidaan tarkastella joko satunnaisen verkon tai satunnaiskävelyn näkökulmasta. Satunnaiskävelyn palautuvuus ja sen kasvattaman verkon topologia ovat 
-kuitenkin kietoutuneet selvästi toisiinsa. \cite{Iacobelli}
 
 Koska NRRW-prosessin kasvattamat verkot ilmentävät sekä skaalautumatonta että skaalautuvaa sisäsolmujen rakennetta, ovat ne epäilemättä kiinnostavia perinteisen verkkoanalyysin näkökulmasta. 
 Osuvimmat sovelluskohteet löytynevät kuitenkin sellaisista systeemeistä, joissa satunnaiskulun ja verkon kasvun yhteys on prosessin sisäänrakennettu, kiistaton ominaisuus. Yksi tällainen
@@ -437,7 +435,7 @@ NRRW-prosessi askelparametrilla $ s $ käyttäytyy seuraavanlaisen algoritmin mu
    \item Verkkoon lisätään uusi solmu ja se liitetään satunnaiskävelyn senhetkiseen sijaintiin.
    \item Palataan kohtaan 1.
 \end{enumerate}
-Matemaattisesti prosessi on kahden toisistaan riippuvan stokastisen prosessin pari, \( ( \Grandom_{t}^{s}, \Wrandom_{t} )_{t \geq 0} \). Molemmat prosessit ovat kytkeytyneet vahvasti toisiinsa, mutta niitä voidaan jaksoittain tarkastella myös erillisinä. Taulukko \ref{realisaatio} esittää yhden mahdollisen NRRW-prosessin realisaation askelparametrilla \( s = 2 \) ja parillisilla ajanhetkillä.
+Matemaattisesti prosessi on kahden toisistaan riippuvan stokastisen prosessin pari, \( ( \Wrandom_{t}, \Grandom_{t}^{s} )_{t \in \N_{0}} \). Molemmat prosessit ovat kytkeytyneet vahvasti toisiinsa, mutta niitä voidaan jaksoittain tarkastella myös erillisinä. Taulukko \ref{realisaatio} esittää yhden mahdollisen NRRW-prosessin realisaation askelparametrilla \( s = 2 \) ja parillisilla ajanhetkillä.
 \begin{table}[htb]
    \caption{Yksi mahdollinen NRRW-prosessin realisaatio askelparametrilla \( s = 2 \). Satunnaiskävely on harmaan värin osoittamassa tilassa ja uusi solmu on juuri lisätty sen naapuriksi. Satunnaiskävely siirtyi nykyiseen tilaansa alleviivatun solmun kautta. \label{realisaatio}}
    \begin{center}
@@ -501,7 +499,7 @@ Koska NRRW-prosessi rakentaa puita, ei verkossa ole muita syklejä kuin juuren k
    \psi_{G_{i}}(v_{i}, v_{j}) = 1 + \indicator \left\{ v_{i} = v_{0}, v_{j} = v_{0} \right\}
    \label{equation:psi}
 \]
-missä $ v_{0} $ on verkon $ G_{i} $ juurisolmu. Lauseke on pätevä vain juurisolmua lukuunottamatta syklittömissä verkoissa jollainen NRRW-prosessin kasvattama verkko on. Nyt todennäköisyys siirtyä solmusta \( v_{i} \) solmuun \( v_{j} \) on yksinkertaisesti
+missä $ v_{0} $ on verkon $ G_{i} $ juurisolmu. Lauseke on pätevä vain juurisolmua lukuunottamatta syklittömissä verkoissa, jollainen NRRW-prosessin kasvattama verkko on. Nyt todennäköisyys siirtyä solmusta \( v_{i} \) solmuun \( v_{j} \) on yksinkertaisesti
 \begin{equation}
    \prob \left[ \Wrandom_{t+1} = v_{j} \mid \Wrandom_{t} = v_{i}, \Grandom_{t}^{s} = G_{i} \right] = \frac{\psi_{G_{i}}(v_{i}, v_{j})}{d_{G_{i}}(v_{i})}
    \label{equation:verkko-tn}
@@ -511,7 +509,7 @@ sillä oletuksella, että satunnaiskävely tapahtuu verkossa $ G_{i} $. Kaavassa
    d_{G_{i}}(v_{i}) = \sum_{w \in V_{i}} \psi_{G_{i}}(v_{i}, w)
    \label{equation:asteluku}
 \end{equation}
-eli kaikkien solmuun \( v_{i} \) yhdistyvien kaarien lukumäärä.
+on kaikkien solmuun \( v_{i} \) yhdistyvien kaarien lukumäärä.
 
 \subsection{Kokonaisuus}
 
@@ -778,8 +776,22 @@ näemme, että peräti kaikki NRRW-verkon solmut ovat palautuvia. Ennen sitä os
 naapureissa. Lemman todistus mukailee aiemmassa tutkimuksessa (Iacobelli et al. \cite{Iacobelli}) rakennettua todistusta, mutta hyödynnän siinä itse rakentamaani NRRW-prosessin stokastista
 esitystä.
 
+\begin{lemma}[Toinen Borelin-Cantellin lemma]
+   Olkoon $ E_{1}, E_{2}, \ldots $ jono riippumattomia tapahtumia jossain todennäköisyysavaruudessa. Jos jonon tapahtumien todennäköisyyksien summa on ääretön, eli
+   \[
+      \sum_{n = 1}^{\infty} \prob \left[ E_{n} \right] = \infty,
+   \]
+   niin todennäköisyys, että tapahtumia sattuu äärettömän monta on yksi:
+   \[
+      \prob \left[ \limsup \limits_{n \rightarrow \infty} E_{n} \right] = 1,
+   \]
+   missä $ \limsup \limits_{n \rightarrow \infty} E_{n} = \bigcap_{n = 1}^{\infty} \bigcup_{k \geq n}^{\infty} E_{k} $ on tapahtumajonon $ \{ E_{n} \}_{n=1}^{\infty} $ limit supremum.
+\label{lemma:borel-cantelli}
+\end{lemma}
+
 \begin{lemma}
 Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ kaari NRRW-prosessin verkossa. Jos $ v_{i} $ on palautuva, niin satunnaiskävely $ (\Wrandom_{t})_{t \in \N_{0}} $ kulkee kaaren $ \{v_{i}, v_{j}\} $ läpi äärettömän monta kertaa lähes varmasti.
+\label{lemma:recurrence}
 \end{lemma}
 
 \begin{proof}
@@ -862,17 +874,16 @@ Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ kaari NRRW-prosessin verkossa. Jo
    \end{align*}
    Toisessa yhtäsuuruudessa $ J_{t_{0}}^{\infty} $ korvataan äärettömällä, sillä tarkasteltava tapahtuma on tapahtuman $ \{ J_{t_{0}}^{\infty} = \infty \} $ osajoukko. Toinen tapahtuma,
    joka on joukon $ \{ J_{t_{0}}^{\infty} < \infty \} $ osajoukko, on mahdoton, sillä $ v_{i} $:n palautuvuudesta seuraa, että $ \prob \left[ J_{t_{0}}^{\infty} < \infty \right] = 0. $
-   Viimeinen yhtäsuuruus perustuu Borel-Cantellin lemmaan... TODO
+   Viimeinen yhtäsuuruus perustuu Borelin-Cantellin lemmaan (lemma \ref{lemma:borel-cantelli}), kun sitä sovelletaan riippumattomien tapahtumien, $ \{ \xi_{h}' = 1 \} $, jonoon.
+   Tapahtumien todennäköisyyksien summa
 
 \end{proof}
 
+Lemmaa \ref{lemma:recurrence} hyödyntäen lähdetutkimuksessa (Iacobelli et al.) todistetaan seuraava parillisen askelparametrin NRRW-prosessia koskeva tulos:
 \begin{theorem}
-
+Kaikki solmut ovat palautuvia parillisen askelparametrin NRRW-prosessissa.
 \end{theorem}
-
-\begin{proof}
-
-\end{proof}
+Lauseen todistus sivuutetaan. \cite{Iacobelli}
 
 \section{Yhteenveto}
 
