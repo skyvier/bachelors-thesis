@@ -595,12 +595,14 @@ prosessin kanssa yhdenmukaiseen mutta yksinkertaisempaan malliin, NRRW-prosessin
 
 \subsection{Yleistä teoriaa}
 
-Olkoon \( (\omega_{t})_{t \geq 0} \) jono riippumattomia välin \( [0, 1] \) tasajakautuneita satunnaislukuja. Toisin sanoen \( w_{t} \sim \text{Tas}(0, 1) \). Tällaista satunnaislukujen sarjaa voidaan käyttää monimutkaisemman stokastisen prosessin algoritmiseen simulointiin. Simulointi rakennetaan etsimällä deterministinen funktio \( \phi : S \times [0, 1] \to S \), joka liittää stokastisen prosessin tilan ja välin \( [0, 1] \) reaaliluvun prosessin seuraavaan tilaan. Funktion \( \phi \) tulee toteuttaa yhtälö
-\begin{align}
+Olkoon \( (\omega_{t})_{t \geq 0} \) jono riippumattomia välin \( [0, 1] \) tasajakautuneita satunnaislukuja. Toisin sanoen \( \omega_{t} \sim \text{Tas}(0, 1) \). Tällaista satunnaislukujen sarjaa voidaan käyttää monimutkaisemman stokastisen prosessin algoritmiseen simulointiin. Simulointi rakennetaan etsimällä deterministinen funktio \( \phi : S \times [0, 1] \to S \), joka liittää stokastisen prosessin tilan ja välin \( [0, 1] \) reaaliluvun prosessin seuraavaan tilaan. Funktion \( \phi \) tulee toteuttaa yhtälö
+\begin{equation}
+   \begin{aligned}
    \prob \left[ \phi(x, \omega_{t}) = y \right] &= \int\limits_0^1 \; \indicator \left\{ \phi(x, w) = y \right\} \mathrm{d}w \\
                                                 &= \prob \left[ X_{t+1} = y \mid X_{t} = x \right] = P_{x,y} \quad \forall \; x, y \in S
+   \end{aligned}
    \label{equation:stokastinen-esitys}
-\end{align}
+\end{equation}
 Yhtälön \ref{equation:stokastinen-esitys} toteuttavaa funktiota \( \phi \) ja satunnaislukujonoa \( (\omega_{t})_{t \geq 0} \) kutsutaan siirtymämatriisin P \textit{stokastiseksi esitykseksi}. Jos stokastisen prosessin alkutila on \( X_{0} = x_{0} \), sitä voidaan simuloida sen stokastisen esityksen avulla rekursiivisesti:
 \[
    X_{t+1} = \phi(X_{t}, \omega_{t})
@@ -772,10 +774,8 @@ ei voida liittää uusia naapureita ennen kuin prosessin pariteetti vaihtuu. Tä
 
 Selvästi satunnaisverkon korkeus jää äärelliseksi, mikäli satunnaiskulun pariteetti vaihtuu vain äärellisen monta kertaa. Jotta satunnaiskulun pariteetti vaihtuisi äärettömän monta kertaa
 ja sen kasvattaman verkon korkeus olisi rajoittamaton, on satunnaiskulun vierailtava juurisolmussa äärettömän monta kertaa. Ainakin juurisolmun on siis oltava palautuva tila. Myöhemmin
-näemme, että peräti kaikki NRRW-verkon solmut ovat palautuvia. Ennen sitä osoitan kuitenkin lemman, joka liittää satunnaiskulun vierailut johonkin solmuun satunnaiskulun vierailuihin sen
-naapureissa. Lemman todistus mukailee aiemmassa tutkimuksessa (Iacobelli et al. \cite{Iacobelli}) rakennettua todistusta, mutta hyödynnän siinä itse rakentamaani NRRW-prosessin stokastista
-esitystä.
-
+näemme, että peräti kaikki NRRW-verkon solmut ovat palautuvia. Ennen sitä osoitan kuitenkin lemman \ref{lemma:recurrence}, joka liittää satunnaiskulun vierailut johonkin solmuun 
+satunnaiskulun vierailuihin sen naapureissa. Todistuksessa hyödynnetään toista Borelin-Cantellin lemmaa, joka on todennäköisyysteorian keskeisimpiä lauseita.
 \begin{lemma}[Toinen Borelin-Cantellin lemma]
    Olkoon $ E_{1}, E_{2}, \ldots $ jono riippumattomia tapahtumia jossain todennäköisyysavaruudessa. Jos jonon tapahtumien todennäköisyyksien summa on ääretön, eli
    \[
@@ -785,10 +785,12 @@ esitystä.
    \[
       \prob \left[ \limsup \limits_{n \rightarrow \infty} E_{n} \right] = 1,
    \]
-   missä $ \limsup \limits_{n \rightarrow \infty} E_{n} = \bigcap_{n = 1}^{\infty} \bigcup_{k \geq n}^{\infty} E_{k} $ on tapahtumajonon $ \{ E_{n} \}_{n=1}^{\infty} $ limit supremum.
+   missä $ \limsup \limits_{n \rightarrow \infty} E_{n} = \bigcap_{n = 1}^{\infty} \bigcup_{k \geq n}^{\infty} E_{k} $ on tapahtumajonon $ \{ E_{n} \}_{n=1}^{\infty} $ limit supremum. \text{\cite{Borel-Cantelli}}
 \label{lemma:borel-cantelli}
 \end{lemma}
 
+Lemman \ref{lemma:recurrence} todistus mukailee aiemmassa tutkimuksessa (Iacobelli et al. \cite{Iacobelli}) rakennettua todistusta, mutta hyödynnän siinä itse rakentamaani NRRW-prosessin 
+stokastista esitystä ja paikkaan aiemman todistuksen virheitä.
 \begin{lemma}
 Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ kaari NRRW-prosessin verkossa. Jos $ v_{i} $ on palautuva, niin satunnaiskävely $ (\Wrandom_{t})_{t \in \N_{0}} $ kulkee kaaren $ \{v_{i}, v_{j}\} $ läpi äärettömän monta kertaa lähes varmasti.
 \label{lemma:recurrence}
@@ -870,22 +872,58 @@ Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ kaari NRRW-prosessin verkossa. Jo
          &= \prob \left[ \left\{ \sum_{h = 1}^{J_{t_{0}}^{\infty}(v_{i})} \xi_{h}' < \infty \right\} \cap \left\{ J_{t_{0}}^{\infty}(v_{i}) = \infty \right\} \right] \\
          &+ \underbrace{\prob \left[ \left\{ \sum_{h = 1}^{J_{t_{0}}^{\infty}(v_{i})} \xi_{h}' < \infty \right\} \cap \left\{ J_{t_{0}}^{\infty}(v_{i}) < \infty \right\} \right]}_{= 0, \; \text{koska } v_{i} \text{ on palautuva}} \\
          &= \prob \left[ \left\{ \sum_{h = 1}^{\infty} \xi_{h}' < \infty \right\} \cap \left\{ J_{t_{0}}^{\infty}(v_{i}) = \infty \right\} \right] \\
-         &= \prob \left[ \sum_{h = 1}^{\infty} \xi_{h}' < \infty \right] = 0.
+         &= \prob \left[ \sum_{h = 1}^{\infty} \xi_{h}' < \infty \right]
    \end{align*}
    Toisessa yhtäsuuruudessa $ J_{t_{0}}^{\infty} $ korvataan äärettömällä, sillä tarkasteltava tapahtuma on tapahtuman $ \{ J_{t_{0}}^{\infty} = \infty \} $ osajoukko. Toinen tapahtuma,
-   joka on joukon $ \{ J_{t_{0}}^{\infty} < \infty \} $ osajoukko, on mahdoton, sillä $ v_{i} $:n palautuvuudesta seuraa, että $ \prob \left[ J_{t_{0}}^{\infty} < \infty \right] = 0. $
-   Viimeinen yhtäsuuruus perustuu Borelin-Cantellin lemmaan (lemma \ref{lemma:borel-cantelli}), kun sitä sovelletaan riippumattomien tapahtumien, $ \{ \xi_{h}' = 1 \} $, jonoon.
-   Tapahtumien todennäköisyyksien summa
+   joka on joukon $ \{ J_{t_{0}}^{\infty} < \infty \} $ osajoukko, on mahdoton, sillä $ v_{i} $:n palautuvuudesta seuraa, että $ \prob \left[ J_{t_{0}}^{\infty} < \infty \right] = 0 $.
 
+   Tarkastelemalla riippumattomien tapahtumien $ \{ \xi_{h}' = 1 \} $ todennäköisyyksien summaa
+   \begin{equation*}
+      \setlength{\jot}{10pt}
+      \begin{aligned}
+      \sum_{h = 1}^{\infty} \prob \left[ \xi_{h}' = 1 \right] &= \sum_{h = 1}^{\infty} \prob \left[ \omega_{t_{h}} \in \left[ 0, \frac{1 + \indicator \{ v_{i} = v_{0}, v_{j} = v_{0} \}}{d_{G_{0}}(v_{i}) + h} \right] \right] \\
+         &= \sum_{h = 1}^{\infty} \frac{1 + \indicator \left\{ v_{i} = v_{0}, v_{j} = v_{0} \right\}}{d_{G_{0}}(v_{i}) + h} \geq \sum_{h = 1}^{\infty} \frac{1}{d_{G_{0}}(v_{i}) + h} \\
+         &= \sum_{h = 1}^{\infty} \frac{1}{h} - \sum_{h = 1}^{d_{G_{0}}(v_{i})} \frac{1}{h} = \infty - H_{d_{G_{0}}(v_{i})} = \infty,
+      \end{aligned}
+   \end{equation*}
+   missä kaksi viimeistä yhtäsuuruutta seuraavat siitä, että harmoninen sarja hajaantuu äärettömäksi ja $ H_{d_{G_{0}}(v_{i})} $ on äärellinen, harmoninen numero.
+
+   Koska tapahtumajonon $ \left\{ \xi_{h}' = 1 \right\}_{h = 1}^{\infty} $ alkiot ovat riippumattomia ja niiden todennäköisyyksien summa on ääretön, toisen Borelin-Cantellin lemman 
+   \ref{lemma:borel-cantelli} mukaan
+   \begin{equation*}
+      \prob \left[ \limsup \limits_{h \rightarrow \infty} \left\{ \xi_{h}' = 1 \right\} \right] = 1,
+   \end{equation*}
+   eli tapahtumia $ \left\{ \xi_{h}' = 1 \right\} $ sattuu äärettömän monta lähes varmasti. Siten todennäköisyys, että tapahtumia tapahtuu vain äärellinen määrä
+   \begin{equation*}
+      \prob \left[ \sum_{h = 1}^{\infty} \xi_{h}' < \infty \right] = 0
+   \end{equation*}
+   ja
+   \begin{align*}
+      \prob \left[ J_{t_{0}}^{\infty}(v_{i}, v_{j}) < \infty \right] = 0 \Leftrightarrow \prob \left[ J_{t_{0}}^{\infty}(v_{i}, v_{j}) = \infty \right] = 1,
+   \end{align*}
+   mikä todistaa lemman väitteen.
 \end{proof}
 
-Lemmaa \ref{lemma:recurrence} hyödyntäen lähdetutkimuksessa (Iacobelli et al.) todistetaan seuraava parillisen askelparametrin NRRW-prosessia koskeva tulos:
+Lemmaa \ref{lemma:recurrence} hyödyntäen lähdetutkimuksessa (Iacobelli et al.) todistetaan seuraava parillisen askelparametrin NRRW-prosessia koskeva tulos, jonka todistus sivuutetaan tässä
+kandidaatintyössä tilanpuutteen vuoksi:
 \begin{theorem}
-Kaikki solmut ovat palautuvia parillisen askelparametrin NRRW-prosessissa.
+Kaikki solmut ovat palautuvia parillisen askelparametrin NRRW-prosessissa. \cite{Iacobelli}
+   \label{theorem:actual-recurrence}
 \end{theorem}
-Lauseen todistus sivuutetaan. \cite{Iacobelli}
 
 \section{Yhteenveto}
+
+NRRW-prosessin tarkastelu paljastaa fundamentaalisen yhteyden satunnaiskulun palautuvuuden ja sen kasvattaman verkon rakenteen välillä. Mikäli prosessin askelparametri on yksi,
+satunnaiskulku on väistyvä, ja se rakentaa satunnaisverkkoja, joiden sisäsolmujen astelukujen jakauma on geometrisen jakauman ylhäältä rajoittama. Sen sijaan parillisen askelparametrin
+NRRW-prosessissa satunnaiskulku on palautuva (lause \ref{theorem:actual-recurrence}), ja prosessin generoimien verkkojen sisäsolmujen astelukujen jakauma on erään potenssilain 
+(lause \ref{theorem:asteluku}) alhaalta rajoittama. 
+
+TODO:
+- lemman 2 parannukset: täydennykset, stokastinen esitys
+- astelukujen jakauman alaraja: parempi on löydettävissä, lisätutkimuksen aihe
+- jatkututkimuksen motivointia: IOTA, yms.
+
+- simulaatiokoodi löytyy liitteestä!!!
 
 \clearpage
 %% Lähdeluettelo
@@ -915,9 +953,13 @@ Lauseen todistus sivuutetaan. \cite{Iacobelli}
    \foreignlanguage{english}{Equilibria in the Tangle.} 
    Department of Statistics, Institute of Mathematics, Statistics and Scientific Computation, University of Campinas, Brazil, 2017.
 
-\bibitem{Haggstrom} Häggström O.
+\bibitem{Haggstrom} Häggström,\ O.
    \foreignlanguage{english}{Finite Markov Chains and Algorithmic Applications.} 
    4.\ painos. Cambridge, Cambridge University Press, 2007. ISBN 978-0-521-89001-4.
+
+\bibitem{Borel-Cantelli} Klenke,\ A.
+   \foreignlanguage{englisn}{Probability Theory.}
+   2.\ painos. London, Springer-Verlag London, 2014. ISBN 978-1-4471-5360-3.
 
 \end{thebibliography}
 
