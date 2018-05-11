@@ -159,8 +159,8 @@ int main(int argc, char* argv[]) {
 
       std::cout << "FINISHED (" << i << ")" << std::endl;
 
-      //std::string graph_path = directory + "/graph_" + std::to_string(i) + ".dot";
-      //process->write_graphviz(graph_path);
+      std::string graph_path = directory + "/graph_" + std::to_string(i) + ".dot";
+      process->write_graphviz(graph_path);
    }
 
    return 0;
