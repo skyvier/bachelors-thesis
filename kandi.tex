@@ -257,7 +257,7 @@ ominaisuuksien tutkimiseen.
 %% Tiivistelmän tekstiosa
 %%
 \begin{abstractpage}[finnish]
-Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piirehin. Verkkojen kasvun ymmärtäminen ja mallintaminen
+Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piireihin. Verkkojen kasvun ymmärtäminen ja mallintaminen
 onkin kiinnittänyt lukuisten tutkijoiden huomion kuluneiden vuosikymmenien aikana.
 \textit{No Restart Random Walk} (NRRW) on uudenlainen malli satunnaisverkon generoimiseen. Mallissa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa 
 kulkiessaan siinä. Kävelijä lähtee alkusolmusta ja kulkee $ s $:n linkin kautta satunnaiseen solmuun, jonka naapuriksi lisätään 
@@ -372,7 +372,7 @@ NRRW       & No Restart Random Walk\\
 %% 
 \thispagestyle{empty}
 
-Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piireihin ja niiden syvällinen ymmärtäminen on tärkeämpää kuin koskaan. Verkkoteoria on matematiikan ala, 
+Nykymaailma on täynnä erilaisia verkostoja Internetistä sosiaalisiin piireihin, ja niiden syvällinen ymmärtäminen on tärkeämpää kuin koskaan. Verkkoteoria on matematiikan ala, 
 joka pyrkii ymmärtämään solmuista ja niitä yhdistävistä linkeistä rakentuvia abstrakteja verkkoja. Koska verkostoja tarkastellaan riittävän abstraktilla tasolla, verkkoteorian 
 tulokset pätevät sovelluskohteesta riippumatta. Sama looginen rakenne, verkko, voi kuvata niin kaupunkien välisiä tieyhteyksiä kuin nettisivujen 
 välisiä linkkejäkin, ja verkkoteorian tulokset ovat aina yhtä oleellisia. Vain verkon tulkinta vaihtuu. 
@@ -391,7 +391,7 @@ solmuja liitetään todennäköisimmin sellaisiin solmuihin, joilla on jo ennest
 verkkojen kasvun taustalla, on siihen perustuvien kasvuprosessien kehittäminen kiinnittänyt tutkijoiden huomion kuluneen vuosikymmenen aikana. 
 
 Yksi suosivaa kiinnittymistä ilmentävä kasvumalli on \textit{No Restart Random Walk} (NRRW), jossa satunnaiskävelijä kasvattaa suuntaamatonta verkkoa kulkiessaan siinä. Nimensä 
-mukaisesti NRRW-prosessin satunnaiskulku ei ala koskaan alusta, vaan jatkuu katkeamatta verkon kasvaessa. Jokaisen $ s $ askeleen välein verkkoon lisätään uusi solmu, ja se liitetään siihen solmuun, johon satunnaiskulku on juuri siirtynyt. Prosessin simulointi ja matemaattinen analyysi osoittavat, että parametrin $ s $ parillisuus vaikuttaa voimakkaasti satunnaiskävelyn ja satunnaisverkon luonteisiin (taulukko \ref{table:nrrw-character}). NRRW-prosessin luonnetta voidaan tarkastella joko satunnaisen verkon tai satunnaiskävelyn näkökulmasta. Satunnaiskävelyn palautuvuus ja sen kasvattaman verkon topologia ovat kuitenkin kietoutuneet selvästi toisiinsa. \cite{Iacobelli}
+mukaisesti NRRW-prosessin satunnaiskulku ei ala koskaan alusta, vaan se jatkuu katkeamatta verkon kasvaessa. Jokaisen $ s $ askeleen välein verkkoon lisätään uusi solmu, ja se liitetään siihen solmuun, johon satunnaiskulku on juuri siirtynyt. Prosessin simulointi ja matemaattinen analyysi osoittavat, että parametrin $ s $ parillisuus vaikuttaa voimakkaasti satunnaiskävelyn ja satunnaisverkon luonteisiin (taulukko \ref{table:nrrw-character}). NRRW-prosessin luonnetta voidaan tarkastella joko satunnaisen verkon tai satunnaiskävelyn näkökulmasta. Satunnaiskävelyn palautuvuus ja sen kasvattaman verkon topologia ovat kuitenkin kietoutuneet selvästi toisiinsa. \cite{Iacobelli}
 
 \begin{table}[htb]
    \begin{center}
@@ -411,7 +411,7 @@ Osuvimmat sovelluskohteet löytynevät kuitenkin sellaisista systeemeistä, jois
 systeemi esiintyy uudenlaisen kryptovaluutan, IOTA:n, toteutuksessa. Toisin kuin perinteiset kryptovaluutat, IOTA ei perustu lohkoketjuteknologiaan. Lohkoketjun sijaan transaktiot 
 tallennetaan suuntaamattomaan, syklittömään verkkoon. Kun uusi transaktio saapuu, on sen vahvistettava kaksi aiempaa transaktiota liittymällä niihin transaktiopuussa. Koska 
 transaktioiden vahvistusmekanismi ei perustu louhimiseen (eng. mining), ei transaktioihin liity myöskään transaktiokustannuksia. Tämä on huomattava etu verrattuna perinteisiin
-kryptovaluuttoihin, sillä se mahdollistaa muun muuassa mikromaksujen maksamisen. \cite{Popov-WP}
+kryptovaluuttoihin, sillä se mahdollistaa muun muassa mikromaksujen maksamisen. \cite{Popov-WP}
 
 IOTA:n transaktiopuun stabiilius ja turvallisuus ovat kuitenkin monimutkaisia kysymyksiä. Puuta mallinnetaan suuntaamattomia ja syklittömiä verkkoja rakentavalla stokastisella prosessilla, 
 Tanglella, jossa uusien solmujen liitoskohdat valitaan satunnaiskulun avulla \cite{Popov-tangle}. NRRW-prosessi on pohjimmiltaan satunnaiskulku satunnaisessa verkossa, ja siten 
@@ -463,7 +463,7 @@ Matemaattisesti prosessi on kahden toisistaan riippuvan stokastisen prosessin pa
    }
    \end{center}
 \end{table}
-Askelparametri vaikuttaa huomattavasti siihen, millaisia verkkoja NRRW-prosessi kasvattaa (taulukko \ref{table:nrrw-character}). Tämä ilmenee hyvin tietokonesimuloiduista realisaatioista kuvassa \ref{simulaatiot}. Parametrilla \( s = 1 \) jokaiseen satunnäiskävelyn vierailemaan tilaan lisätään uusi solmu. Tämä johtaa korkeisiin puihin, joissa solmut jakutuvat tasaisesti parillisille ja parittomille tasoille. Satunnaiskävelyn kaikki tilat ovat väistyviä.
+Askelparametri vaikuttaa huomattavasti siihen, millaisia verkkoja NRRW-prosessi kasvattaa (taulukko \ref{table:nrrw-character}). Tämä ilmenee hyvin tietokonesimuloiduista realisaatioista kuvassa \ref{simulaatiot}. Parametrilla \( s = 1 \) jokaiseen satunnäiskävelyn vierailemaan tilaan lisätään uusi solmu. Tämä johtaa korkeisiin puihin, joissa solmut jakautuvat tasaisesti parillisille ja parittomille tasoille. Satunnaiskävelyn kaikki tilat ovat väistyviä.
 
 Sen sijaan parillinen askelparametri (\( s \in 2\N_{0} \)) johtaa hyvin toisenlaisiin verkkoihin. Simulaatiotulokset viittaavat solmujen kasaantuvan suurissa määrin joidenkin yksittäisten solmujen jälkeläisiksi. Kyseessä on niin sanottu suosivan kiinnittymisen ilmiö, jossa jotain mitattavaa suuretta kertyy sellaisille joukon alkioille, joilla on jo ennestään paljon kyseistä suuretta. Satunnaisverkossa tämä ilmenee siten, että uusia solmuja liitetään todennäköisimmin sellaisiin verkon solmuihin, joilla on jo ennestään korkea asteluku. Suosiva kiinnittyminen on yhteydessä skaalautumattomiin verkkoihin \cite{Babarasi}.
 
@@ -499,7 +499,7 @@ $ G_{j} = (V_{i} \cup \{ v_{n + 1} \}, E_{i} \cup \{ (v_{j}, v_{n + 1}) \}) $ ri
 
 \subsubsection{Satunnaiskulku}
 
-Vastaavasti satunnaiskulkuprosessin \( (\Wrandom_{t})_{t \in \N_{0}} \) tilajoukon ja siirtymätodennäköisyydet määrää sen kasvattama satunnaisverkko. Sekä tilajoukko että siirtymätodennäköisyydet muuttuvat aina, kun verkkoon lisätään uusi solmu. Lisäyshetkien välillä tilajoukko on kuitenkin vakio ja satunnaiskävelyprosessi voidaankin silloin nähdä tavallisena äärellisen tilajoukon Markov-ketjuna. Jos satunnaiskävely on solmussa \( v_{i} \) hetkellä \( t \), määräytyy seuraava tila satunnaisesti valitsemalla yksi solmusta \( v_{i} \) lähtevä linkki ja siirtymällä sen osoittamaan solmuun. Todennäköisyysmassa on tasajakautunut kaikkien solmun \( v_{i} \) linkkien kesken. 
+Vastaavasti satunnaiskulkuprosessin \( (\Wrandom_{t})_{t \in \N_{0}} \) tilajoukon ja siirtymätodennäköisyydet määrää sen kasvattama satunnaisverkko. Sekä tilajoukko että siirtymätodennäköisyydet muuttuvat aina, kun verkkoon lisätään uusi solmu. Lisäyshetkien välillä tilajoukko on kuitenkin vakio, ja satunnaiskävelyprosessi voidaankin silloin nähdä tavallisena äärellisen tilajoukon Markov-ketjuna. Jos satunnaiskävely on solmussa \( v_{i} \) hetkellä \( t \), määräytyy sen seuraava tila satunnaisesti valitsemalla yksi solmusta \( v_{i} \) lähtevä linkki ja siirtymällä sen osoittamaan solmuun. Todennäköisyysmassa on tasajakautunut kaikkien solmun \( v_{i} \) linkkien kesken. 
 
 NRRW-prosessin kasvattama verkko on juurisolmun silmukkaa lukuunottamatta syklitön. Koska linkit solmusta itseensä lasketaan verkkoteoriassa kahdesti, merkitään solmun \( v_{i} \) 
 solmuun \( v_{j} \) yhdistävien linkkien määrää verkossa $ G_{i} $
@@ -508,7 +508,7 @@ solmuun \( v_{j} \) yhdistävien linkkien määrää verkossa $ G_{i} $
    \label{equation:psi}
 \end{equation}
 missä $ v_{0} $ on verkon $ G_{i} $ juurisolmu, ja $ E_{i} $ on verkon $ G_{i} $ linkkien joukko. Lauseke perustuu siihen tosiasiaan, että NRRW-prosessin kasvattamissa verkoissa on alusta
-alkaen edellä mainittu juurisolmun silmukka. Nyt todennäköisyys siirtyä solmusta \( v_{i} \) solmuun \( v_{j} \) verkossa $ G_{i} $ on yksinkertaisesti
+alkaen edellä mainittu juurisolmun silmukka, mutta ei muita silmukoita. Nyt todennäköisyys siirtyä solmusta \( v_{i} \) solmuun \( v_{j} \) verkossa $ G_{i} $ on yksinkertaisesti
 \begin{equation}
    \prob \left[ \Wrandom_{t+1} = v_{j} \mid \Wrandom_{t} = v_{i}, \Grandom_{t}^{s} = G_{i} \right] = \frac{\psi_{G_{i}}(v_{i}, v_{j})}{d_{G_{i}}(v_{i})}.
    \label{equation:verkko-tn}
@@ -617,7 +617,7 @@ Yhtälön \ref{equation:stokastinen-esitys} toteuttavaa funktiota \( \phi \) ja 
 \[
    X_{t+1} = \phi(X_{t}, \omega_{t}).
 \]
-Mikäli stokastinen prosessi on epähomogeeninen ajassa, vaaditaan stokastiseen esitykseen jono deterministisiä funktioita \( (\phi^{(t)})_{t \geq 0} \), jotka ovat muotoa \( \phi^{(t)} : S \times [0, 1] \to S \). Funktioiden \( \phi^{(t)} \) tulee toteuttaa yhtälöä \ref{equation:stokastinen-esitys} vastaava ehto \( \forall \; t \geq 0 \; \text{ja} \; x, y \in S \):
+Mikäli stokastinen prosessi on ajassa epähomogeeninen, vaaditaan stokastiseen esitykseen jono deterministisiä funktioita \( (\phi^{(t)})_{t \geq 0} \), jotka ovat muotoa \( \phi^{(t)} : S \times [0, 1] \to S \). Funktioiden \( \phi^{(t)} \) tulee toteuttaa yhtälöä \ref{equation:stokastinen-esitys} vastaava ehto \( \forall \; t \geq 0 \; \text{ja} \; x, y \in S \):
 \begin{equation}
    \prob \left[ \phi^{(t)}(x, \omega_{t}) = y \right] = \prob \left[ X_{t+1} = y \mid X_{t} = x \right] = P^{(t)}(x,y).
    \label{equation:epahom-stokastinen-esitys}
@@ -644,7 +644,6 @@ missä \( \lambda \) on satunnaiskulun \( (\Wrandom_{t})_{t \geq 0} \) stokastis
 \end{equation}
 missä \( \rho \) on funktio verkosta sen siirtymämatriisiin (\ref{equation:esitys-siirt}) ja $ |V| $ on verkon $ G $ solmujen lukumäärä. Hyödyntäen kaavan \ref{equation:psi} esitystä solmuja yhdistävien linkkien määrälle saadaan kuvaukselle \( \rho \) alkioittainen määritelmä
 \begin{equation}
- + \indicator \left\{ v_{i} = v_{0}, v_{j} = v_{0} \right\}
    \rho(G)_{i,j} = \frac{\psi_{G}(v_{i}, v_{j})}{d_{G}(v_{i})},
    \label{equation:esitys-siirt}
 \end{equation}
@@ -664,7 +663,7 @@ Olkoon $ (\omega_{t})_{t \geq 0} $ jono riippumattomia välin $ [0, 1] $ tasajak
 \label{theorem:my-theorem}
 \end{theorem}
 \begin{proof}
-NRRW-prosessin siirtymätodennäköisyydet on laskettu kappaleessa 2.3.1. Prosessin käyttäytyminen ajanhetkellä $ t $ riippuu siitä, onko $ t $ jaollinen askelparametrilla $ s $. Osoitetaan stokastisen esitykseen yhdenmukaisuus NRRW-prosessin kanssa molemmissa tapauksissa. Olkoon $ X_{t} = (\Wrandom_{t}, \Grandom^{s}_{t}) $ NRRW-prosessin tila hetkellä $ t $. 
+NRRW-prosessin siirtymätodennäköisyydet on laskettu kappaleessa 2.3.2. Prosessin käyttäytyminen ajanhetkellä $ t $ riippuu siitä, onko $ t $ jaollinen askelparametrilla $ s $ vai ei. Osoitetaan stokastisen esitykseen yhdenmukaisuus NRRW-prosessin kanssa molemmissa tapauksissa. Olkoon $ X_{t} = (\Wrandom_{t}, \Grandom^{s}_{t}) $ NRRW-prosessin tila hetkellä $ t $. 
 
 On näytettävä kaavan \ref{equation:epahom-stokastinen-esitys} mukaisesti, että
 \[
@@ -677,7 +676,8 @@ kaikilla $ x, y \in S $ ja $ t \in \N_{0} $, missä $ S $ on kaavan \ref{equatio
                                                 &= \int\limits_0^1 \; \indicator \left\{ \lambda\left( (v_{x}, G_{x}), w \right) = v_{y} \right\} \indicator \left\{ \mu^{(t)} \left( \lambda\left( (v_{x}, G_{x}), w \right), G_{x} \right) = G_{y} \right\} \mathrm{d}w
 \end{align*}
 
-\paragraph{Kun $ t + 1 \bmod s \neq 0 $},
+{\parindent0pt
+\textbf{Kun $ t + 1 \bmod s \neq 0 $,}
 \begin{align*}
    \prob \left[ \phi^{(t)}(x, \omega_{t}) = y \right] &= \int\limits_0^1 \; \indicator \left\{ \lambda\left( (v_{x}, G_{x}), w \right) = v_{y} \right\} \indicator \left\{ \mu^{(t)} \left( \lambda\left( (v_{x}, G_{x}), w \right), G_{x} \right) = G_{y} \right\} \mathrm{d}w \\
                                                 &= \indicator \left\{ G_{x} = G_{y} \right\} \int\limits_0^1 \; \indicator \left\{ \lambda\left( (v_{x}, G_{x}), w \right) = v_{y} \right\} \mathrm{d}w \\
@@ -685,7 +685,7 @@ kaikilla $ x, y \in S $ ja $ t \in \N_{0} $, missä $ S $ on kaavan \ref{equatio
                                                 &= \prob \left[ X_{t+1} = y \mid X_{t} = x \right].
 \end{align*}
 
-\paragraph{Kun $ t + 1 \bmod s = 0 $},
+\textbf{Kun $ t + 1 \bmod s = 0 $,}
 
 \begin{align*}
    \prob \left[ \phi^{(t)}(x, \omega_{t}) = y \right] &= \int\limits_0^1 \; \indicator \left\{ \lambda\left( (v_{x}, G_{x}), w \right) = v_{y} \right\} \indicator \left\{ \mu^{(t)} \left( \lambda\left( (v_{x}, G_{x}), w \right), G_{x} \right) = G_{y} \right\} \mathrm{d}w \\
@@ -695,6 +695,7 @@ kaikilla $ x, y \in S $ ja $ t \in \N_{0} $, missä $ S $ on kaavan \ref{equatio
                                                 &= \prob \left[ X_{t+1} = y \mid X_{t} = x \right].
 \end{align*}
 Selvästi kaikilla $ t \in \N_{0} $ pätee, että $ \prob \left[ \phi^{(t)}(x, \omega_{t}) = y \right] = \prob \left[ X_{t+1} = y \mid X_{t} = x \right] $. Siten rakentamani stokastinen esitys on ekvivalentti NRRW-prosessin kanssa.
+}
 
 \end{proof}
 
@@ -818,7 +819,7 @@ Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ linkki NRRW-prosessin verkossa. J
    Oletuksen mukaan solmu $ v_{i} $ on palautuva. Tämä tarkoittaa sitä, että NRRW-prosessin satunnaiskulku palaa äärellisessä ajassa takaisin solmuun $ v_{i} $ riippumatta satunnaisverkon
    $ \Grandom_{t}^{s} $ tilasta. Jos ensimmäinen siirtymähetki solmuun $ v_{i} $ määritellään
    \[
-      T_{v_{i}}^{+} = \min \left\{ t \geq 1 : \Wrandom_{t} = v_{i} \right\}
+      T_{v_{i}}^{+} = \min \left\{ t \geq 1 : \Wrandom_{t} = v_{i} \right\},
    \]
    niin solmulle $ v_{i} $ pätee kaikilla oletuksen mukaisilla verkoilla $ G $, että
    \[
@@ -827,7 +828,7 @@ Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ linkki NRRW-prosessin verkossa. J
    Jos paluuaika solmuun $ v_{i} $ on äärellinen lähes varmasti, niin on selvää, että solmusta $ v_{i} $ käynnistyvä satunnaiskulku $ (\Wrandom_{t})_{t \in \N_{0}} $ myös vierailee
    rajoittamattoman ajanjakson aikana äärettömän monta kertaa solmussa $ v_{i} $:
    \begin{equation}
-      \prob \left[ J_{0}^{\infty} = \infty \mid (\Wrandom_{t}, \Grandom_{t}^{s} = (v_{i}, G) \right] = 1.
+      \prob \left[ J_{0}^{\infty}(v_{i}) = \infty \mid (\Wrandom_{t}, \Grandom_{t}^{s} = (v_{i}, G) \right] = 1.
       \label{equation:oletus}
    \end{equation}
    Olkoon $ (v', G') $ nyt mikä tahansa NRRW-prosessin tila, joka on saavutettavissa ajanhetkellä $ t $ ($ \prob \left[ (\Wrandom_{t}, \Grandom_{t}^{s}) = (w, G) \right] > 0 $).
@@ -847,7 +848,7 @@ Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ linkki NRRW-prosessin verkossa. J
    Olkoon $ t_{0} $ nyt sellainen ajanhetki, jolloin solmut $ v_{i} $ ja $ v_{j} $ sekä niitä yhdistävä linkki $ \{ v_{i}, v_{j} \} $ kuuluvat verkkoon $ \Grandom_{t_{0}}^{s} = G_{0} $.
    Lemman väite on nyt tosi, jos $ \prob \left[ J_{t_{0}}^{\infty}(v_{i}, v_{j}) = \infty \right] = 1. $ Todistetaan tämä hyödyntäen NRRW-prosessin stokastista esitystä.
 
-   Olkoon $ (\omega_{t})_{t \geq t_{0}} $ jono riippumattomia välin $ [0, 1] $ tasajakutuneita satunnaislukuja. Kuten lause \ref{theorem:my-theorem} osoittaa, tällaista satunnaislukujen
+   Olkoon $ (\omega_{t})_{t \geq t_{0}} $ jono riippumattomia välin $ [0, 1] $ tasajakautuneita satunnaislukuja. Kuten lause \ref{theorem:my-theorem} osoittaa, tällaista satunnaislukujen
    jonoa voidaan käyttää koko NRRW-prosessin $ (\Wrandom_{t}, \Grandom_{t}^{s}) $ simulointiin kaikilla $ t \geq t_{0} $. Erityisesti sen avulla voidaan määrittää, siirtyykö satunnaiskulku
    solmusta $ v_{i} $ solmuun $ v_{j} $ ajanhetkellä $ t $. Määritellään tätä varten uusi jono satunnaislukuja:
    \begin{equation*}
@@ -867,7 +868,7 @@ Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ linkki NRRW-prosessin verkossa. J
       = \sum_{k = t_{0}}^{t} \indicator \left\{ \Wrandom_{k} = v_{i} \right\} \xi_{k}.
    \]
 
-   Olkoon $ t_{h} $ se satunnainen ajanhetki, jolloin satunnaiskulku $ \Wrandom_{t} $ palaa solmuun $ v_{i} $ $ h $:nnen kerran ajanhetken $ t_{0} $ jälkeen. Jos $ J_{t_{0}}^{\infty} < \infty $,
+   Olkoon $ t_{h} $ se satunnainen ajanhetki, jolloin satunnaiskulku $ \Wrandom_{t} $ palaa solmuun $ v_{i} $ $ h $:nnen kerran ajanhetken $ t_{0} $ jälkeen. Jos $ J_{t_{0}}^{\infty}(v_{i}) < \infty $,
    niin määritellään, että $ t_{h} = t_{J_{t_{0}}^{\infty}(v_{i})} + h $, kun $ h > J_{t_{0}}^{\infty}(v_{i}) $. Formuloidaan jälleen uusi satunnaislukujen jono indikoimaan, kulkeeko 
    satunnaiskulku $ h $:nnen paluuhetken jälkeen linkin $ \{ v_{i}, v_{j} \} $ kautta:
    \begin{equation*}
@@ -891,8 +892,8 @@ Olkoon $ v_{i} $ solmu ja $ \{v_{i}, v_{j}\} $ linkki NRRW-prosessin verkossa. J
          &= \prob \left[ \left\{ \sum_{h = 1}^{\infty} \xi_{h}' < \infty \right\} \cap \left\{ J_{t_{0}}^{\infty}(v_{i}) = \infty \right\} \right] \\
          &= \prob \left[ \sum_{h = 1}^{\infty} \xi_{h}' < \infty \right].
    \end{align*}
-   Toisessa yhtäsuuruudessa $ J_{t_{0}}^{\infty}(v_{i}) $ korvataan äärettömällä, sillä tarkasteltava tapahtuma on tapahtuman $ \{ J_{t_{0}}^{\infty} = \infty \} $ osajoukko. 
-   Toinen tapahtuma, joka on joukon $ \{ J_{t_{0}}^{\infty} < \infty \} $ osajoukko, on mahdoton, sillä $ v_{i} $:n palautuvuudesta seuraa, että $ \prob \left[ J_{t_{0}}^{\infty} < \infty \right] = 0 $.
+   Toisessa yhtäsuuruudessa $ J_{t_{0}}^{\infty}(v_{i}) $ korvataan äärettömällä, sillä tarkasteltava tapahtuma on tapahtuman $ \{ J_{t_{0}}^{\infty}(v_{i} = \infty \} $ osajoukko. 
+   Toinen tapahtuma, joka on joukon $ \{ J_{t_{0}}^{\infty}(v_{i}) < \infty \} $ osajoukko, on mahdoton, sillä $ v_{i} $:n palautuvuudesta seuraa, että $ \prob \left[ J_{t_{0}}^{\infty}(v_{i}) < \infty \right] = 0 $.
 
    Tarkastelemalla riippumattomien tapahtumien $ \{ \xi_{h}' = 1 \} $ todennäköisyyksien summaa nähdään, että
    \begin{equation*}
@@ -937,7 +938,7 @@ NRRW-prosessissa satunnaiskulku on palautuva (lause \ref{theorem:actual-recurren
 
 Tässä kandidaatintyössä syvennyin NRRW-prosessin kasvumallin ymmärtämiseen ja esittelyyn. Formuloin prosessille siirtymätodennäköisyydet, tilajoukon ja erään stokastisen esityksen,
 jonka osoitin oikeaksi (lause \ref{theorem:my-theorem}). Hyödynsin kyseistä stokastista esitystä parillisen NRRW-prosessin ydinominaisuuksien tarkastelussa. Ensin ohjelmoin stokastiseen
-esitykseen perustuvan simulaatio-ohjelman NRRW-prosessille ja arvioin lauseen \ref{theorem:asteluku} astelukujen jakauman alarajan hyvyyttä simulaatiotuloksilla. Alaraja osoittautui
+esitykseen perustuvan simulaatio-ohjelman NRRW-prosessille, ja arvioin lauseen \ref{theorem:asteluku} astelukujen jakauman alarajan hyvyyttä simulaatiotuloksilla. Alaraja osoittautui
 uskottavaksi, muttei vahvimmaksi mahdolliseksi. Lopuksi ehostin aiemmassa tutkimuksessa esitettyä lemman \ref{lemma:recurrence} todistusta täydentämällä välivaiheita ja osoittamalla, että NRRW-prosessin stokastinen esitys, johon todistus perustuu, on todellakin olemassa.
 
 Tämän lyhyen tarkastelun perusteella NRRW-malli on kiinnostava askel kohti syvällisempää verkkojen kasvun ymmärtämistä. Se yhdistää satunnaiskulun ja sen kasvattaman verkon ominaisuudet
