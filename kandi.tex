@@ -394,6 +394,8 @@ Yksi suosivaa kiinnittymistä ilmentävä kasvumalli on \textit{No Restart Rando
 mukaisesti NRRW-prosessin satunnaiskulku ei ala koskaan alusta, vaan se jatkuu katkeamatta verkon kasvaessa. Jokaisen $ s $ askeleen välein verkkoon lisätään uusi solmu, ja se liitetään siihen solmuun, johon satunnaiskulku on juuri siirtynyt. Prosessin simulointi ja matemaattinen analyysi osoittavat, että parametrin $ s $ parillisuus vaikuttaa voimakkaasti satunnaiskävelyn ja satunnaisverkon luonteisiin (taulukko \ref{table:nrrw-character}). NRRW-prosessin luonnetta voidaan tarkastella joko satunnaisen verkon tai satunnaiskävelyn näkökulmasta. Satunnaiskävelyn palautuvuus ja sen kasvattaman verkon topologia ovat kuitenkin kietoutuneet selvästi toisiinsa. \cite{Iacobelli}
 
 \begin{table}[htb]
+   \caption{NRRW-prosessin askelparametrin vaikutus taustalla vaikuttavan satunnaiskulun ja sen generoiman satunnaisverkon ominaisuuksiin.}
+   \label{table:nrrw-character}
    \begin{center}
    \begin{tabular}{|c|c|p{7.5cm}|}
    \hline
@@ -402,18 +404,16 @@ mukaisesti NRRW-prosessin satunnaiskulku ei ala koskaan alusta, vaan se jatkuu k
    $ s = 2n $     & Palautuva       & Sisäsolmujen astelukujen jakauma on potenssilain alhaalta rajoittama. \\ \hline
    \end{tabular}
    \end{center}
-   \caption{NRRW-prosessin askelparametrin vaikutus taustalla vaikuttavan satunnaiskulun ja sen generoiman satunnaisverkon ominaisuuksiin.}
-   \label{table:nrrw-character}
 \end{table}
 
 Koska NRRW-prosessin kasvattamat verkot ilmentävät sekä skaalautumatonta että skaalautuvaa sisäsolmujen rakennetta, ovat ne epäilemättä kiinnostavia perinteisen verkkoanalyysin näkökulmasta. 
 Osuvimmat sovelluskohteet löytynevät kuitenkin sellaisista systeemeistä, joissa satunnaiskulun ja verkon kasvun yhteys on prosessin sisäänrakennettu, kiistaton ominaisuus. Yksi tällainen
-systeemi esiintyy uudenlaisen kryptovaluutan, IOTA:n, toteutuksessa. Toisin kuin perinteiset kryptovaluutat, IOTA ei perustu lohkoketjuteknologiaan. Lohkoketjun sijaan transaktiot 
+systeemi esiintyy uudenlaisen kryptovaluutan IOTA:n toteutuksessa. Toisin kuin perinteiset kryptovaluutat, IOTA ei perustu lohkoketjuteknologiaan. Lohkoketjun sijaan transaktiot 
 tallennetaan suuntaamattomaan, syklittömään verkkoon. Kun uusi transaktio saapuu, on sen vahvistettava kaksi aiempaa transaktiota liittymällä niihin transaktiopuussa. Koska 
 transaktioiden vahvistusmekanismi ei perustu louhimiseen (eng. mining), ei transaktioihin liity myöskään transaktiokustannuksia. Tämä on huomattava etu verrattuna perinteisiin
 kryptovaluuttoihin, sillä se mahdollistaa muun muassa mikromaksujen maksamisen. \cite{Popov-WP}
 
-IOTA:n transaktiopuun stabiilius ja turvallisuus ovat kuitenkin monimutkaisia kysymyksiä. Puuta mallinnetaan suuntaamattomia ja syklittömiä verkkoja rakentavalla stokastisella prosessilla, 
+IOTA:n transaktiopuun stabiilius ja turvallisuus ovat kuitenkin monimutkaisia kysymyksiä. Puuta mallinnetaan suuntaamattomia ja syklittömiä verkkoja rakentavalla stokastisella prosessilla 
 Tanglella, jossa uusien solmujen liitoskohdat valitaan satunnaiskulun avulla \cite{Popov-tangle}. NRRW-prosessi on pohjimmiltaan satunnaiskulku satunnaisessa verkossa, ja siten 
 sen ymmärtäminen on osa matemaattista kivijalkaa, jonka päälle Tanglen kaltaiset tietotekniset sovellukset rakennetaan.
 
@@ -475,7 +475,7 @@ Sen sijaan parillinen askelparametri (\( s \in 2\N_{0} \)) johtaa hyvin toisenla
 
 \subsection{Kaksi prosessia}
 
-NRRW-prosessin ominaisuudet ovat seurausta satunnaiskulun ja sen kasvattaman satunnaisen verkon välisestä vuorovaikutuksesta. Malli on monimutkainen ja yksinkertaisuuden vuoksi on ensin syytä tarkastella satunnaisverkkoa ja satunnaiskulkua erillisinä prosesseina. Tämä mahdollistaa erillisiin malleihin liittyvän terminologian ja yksityiskohtien esittelyn ennen NRRW-prosessin kokonaisuuteen paneutumista.
+NRRW-prosessin ominaisuudet ovat seurausta satunnaiskulun ja sen kasvattaman satunnaisen verkon välisestä vuorovaikutuksesta. Malli on monimutkainen, ja yksinkertaisuuden vuoksi on ensin syytä tarkastella satunnaisverkkoa ja satunnaiskulkua erillisinä prosesseina. Tämä mahdollistaa erillisiin malleihin liittyvän terminologian ja yksityiskohtien esittelyn ennen NRRW-prosessin kokonaisuuteen paneutumista.
 
 \subsubsection{Satunnaisverkko}
 
@@ -488,7 +488,7 @@ Kasvavan verkon käsittelyn helpottamiseksi satunnaisverkon \( (\Grandom_{t}^{s}
 siirtyä vain sellaisiin uusiin tiloihin, jotka saadaan liittämällä johonkin aiemman tilan solmuun uusi naapuri.
 
 Olkoon NRRW-prosessi tilassa $ (v_{i}, G_{i}) $ hetkellä $ t = sn $. Todennäköisyys, että satunnaisverkko $ G_{i} = (V_{i}, E_{i}) $ kasvaa $s$:ssä askeleessa joksikin sen laajennuksista 
-$ G_{j} = (V_{i} \cup \{ v_{n + 1} \}, E_{i} \cup \{ (v_{j}, v_{n + 1}) \}) $ riippuu täysin satunnaiskulun \( (\Wrandom_{t})_{t \in \N_{0}} \) siirtymätodennäköisyyksistä:
+$ G_{j} = (V_{i} \cup \{ v_{n + 1} \}, E_{i} \cup \{ (v_{j}, v_{n + 1}) \}) $, riippuu täysin satunnaiskulun \( (\Wrandom_{t})_{t \in \N_{0}} \) siirtymätodennäköisyyksistä:
 \begin{equation}
    \setlength{\jot}{10pt}
    \begin{aligned}
@@ -501,7 +501,7 @@ $ G_{j} = (V_{i} \cup \{ v_{n + 1} \}, E_{i} \cup \{ (v_{j}, v_{n + 1}) \}) $ ri
 
 Vastaavasti satunnaiskulkuprosessin \( (\Wrandom_{t})_{t \in \N_{0}} \) tilajoukon ja siirtymätodennäköisyydet määrää sen kasvattama satunnaisverkko. Sekä tilajoukko että siirtymätodennäköisyydet muuttuvat aina, kun verkkoon lisätään uusi solmu. Lisäyshetkien välillä tilajoukko on kuitenkin vakio, ja satunnaiskävelyprosessi voidaankin silloin nähdä tavallisena äärellisen tilajoukon Markov-ketjuna. Jos satunnaiskävely on solmussa \( v_{i} \) hetkellä \( t \), määräytyy sen seuraava tila satunnaisesti valitsemalla yksi solmusta \( v_{i} \) lähtevä linkki ja siirtymällä sen osoittamaan solmuun. Todennäköisyysmassa on tasajakautunut kaikkien solmun \( v_{i} \) linkkien kesken. 
 
-NRRW-prosessin kasvattama verkko on juurisolmun silmukkaa lukuunottamatta syklitön. Koska linkit solmusta itseensä lasketaan verkkoteoriassa kahdesti, merkitään solmun \( v_{i} \) 
+NRRW-prosessin kasvattama verkko on juurisolmun silmukkaa lukuun ottamatta syklitön. Koska linkit solmusta itseensä lasketaan verkkoteoriassa kahdesti, merkitään solmun \( v_{i} \) 
 solmuun \( v_{j} \) yhdistävien linkkien määrää verkossa $ G_{i} $
 \begin{equation}
    \psi_{G_{i}}(v_{i}, v_{j}) = \indicator \left\{ \left\{ v_{i}, v_{j} \right\} \in E_{i} \right\} + \indicator \left\{ v_{i} = v_{0}, v_{j} = v_{0} \right\},
