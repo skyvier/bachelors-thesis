@@ -381,7 +381,7 @@ Yksi tärkeä askel kohti kaikenlaisten reaalimaailman verkkojen ymmärtämistä
 pystymme simuloimaan niitä ja ennustamaan niiden kehitystä. Kuluneina vuosikymmeninä onkin kehitetty lukuisia erilaisia verkkojen kasvumalleja. Niiden generoimien verkkojen
 topologiassa on kiinnitetty huomioita moniin erilaisiin ominaisuuksiin, mutta yksi kiinnostavimmista piirteistä on solmujen astelukujen jakauma. Empiiriset kokeet ovat osoittaneet, 
 että monet suuret ja kiinnostavat verkot, kuten Internet, ovat skaalautumattomia (eng. scale-free) \cite{Clauset}. Skaalautumattoman verkon solmujen astelukujen jakauman määrittää jokin 
-potenssilaki ($ \prob \left[ k \right] = k^{\gamma} $). Yksinkertaistaen tämä tarkoittaa sitä, että ääriarvot, eli sellaiset solmut, joilla on hyvin korkea asteluku, ovat 
+potenssilaki ($ \prob \left[ k \right] \propto k^{\gamma} $). Yksinkertaistaen tämä tarkoittaa sitä, että ääriarvot, eli sellaiset solmut, joilla on hyvin korkea asteluku, ovat 
 skaalautumattomissa verkoissa verrattain yleisiä. \cite{Babarasi-kirja} 
 
 Monet tosielämän verkot syntyvät näennäisesti hyvinkin toisistaan poikkeavista prosesseista, mutta niille on kuitenkin tyypillistä juuri skaalautumaton rakenne. Tämä viittaa siihen,
@@ -938,7 +938,7 @@ NRRW-prosessissa satunnaiskulku on palautuva (lause \ref{theorem:actual-recurren
 
 Tässä kandidaatintyössä syvennyin NRRW-prosessin kasvumallin ymmärtämiseen ja esittelyyn. Formuloin prosessille siirtymätodennäköisyydet, tilajoukon ja erään stokastisen esityksen,
 jonka osoitin oikeaksi (lause \ref{theorem:my-theorem}). Hyödynsin kyseistä stokastista esitystä parillisen NRRW-prosessin ydinominaisuuksien tarkastelussa. Ensin ohjelmoin stokastiseen
-esitykseen perustuvan simulaatio-ohjelman NRRW-prosessille, ja arvioin lauseen \ref{theorem:asteluku} astelukujen jakauman alarajan hyvyyttä simulaatiotuloksilla. Alaraja osoittautui
+esitykseen perustuvan simulaatio-ohjelman NRRW-prosessille (liite A), ja arvioin lauseen \ref{theorem:asteluku} astelukujen jakauman alarajan hyvyyttä simulaatiotuloksilla. Alaraja osoittautui
 uskottavaksi, muttei vahvimmaksi mahdolliseksi. Lopuksi ehostin aiemmassa tutkimuksessa esitettyä lemman \ref{lemma:recurrence} todistusta täydentämällä välivaiheita ja osoittamalla, että NRRW-prosessin stokastinen esitys, johon todistus perustuu, on todellakin olemassa.
 
 Tämän lyhyen tarkastelun perusteella NRRW-malli on kiinnostava askel kohti syvällisempää verkkojen kasvun ymmärtämistä. Se yhdistää satunnaiskulun ja sen kasvattaman verkon ominaisuudet
